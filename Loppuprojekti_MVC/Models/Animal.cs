@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Loppuprojekti_MVC.Models
 {
+    /// <summary>
+    /// Annukka's original
+    /// </summary>
     public class Animal
     {
         public int Id { get; set; }
@@ -16,6 +19,6 @@ namespace Loppuprojekti_MVC.Models
         public string Order { get; set; }
         public string Family { get; set; }
         public string Genus { get; set; }
-
     }
+
 }
