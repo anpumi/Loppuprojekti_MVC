@@ -1,0 +1,90 @@
+﻿@model Loppuprojekti_MVC.Models.Species
+
+@{
+    ViewData["Title"] = "SpeciesIndex";
+}
+
+<h1>SpeciesIndex</h1>
+
+<div>
+    <h4>Species</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxonid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Taxonid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KingdomName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KingdomName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhylumName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhylumName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ClassName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ClassName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OrderName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FamilyName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FamilyName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenusName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenusName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ScientificName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ScientificName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InfraRank)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InfraRank)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InfraName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InfraName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Population)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Population)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

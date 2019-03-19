@@ -25,8 +25,8 @@ namespace Loppuprojekti_MVC.Models
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //kovakoodattu osite & token, muuta
-                //ja pistä if - jos ei ekassa setissä, niin tokassa, kolmannessa....
+                //TODO:kovakoodattu osoite & token, muuta
+                //TODO:pistä if - jos ei ekassa setissä, niin tokassa, kolmannessa....
                 var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/page/0?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;

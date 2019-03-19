@@ -12,13 +12,14 @@ namespace Loppuprojekti_MVC.Controllers
 {
     public class SpeciesController : Controller
     {
-        // GET: api/Api
-        [HttpGet]
-        public IEnumerable<string> Get()
+ 
+        public ActionResult SpeciesIndex() 
         {
+            ViewBag.Title = "IUCN Red List";
             //tähän kutsu Models.RestUtils - 
             //niin kuin C# junissa? 
-            return new string[] { "value1", "value2" };
+            
+            return View();
         }
 
     }
