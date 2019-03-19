@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Loppuprojekti_MVC.Controllers
 {
+    /// <summary>
+    /// Example API controller
+    /// </summary>
+
     [Route("api/[controller]")]
     [ApiController]
     public class ApiController : ControllerBase

@@ -9,6 +9,9 @@ using Loppuprojekti_MVC.Models;
 
 namespace Loppuprojekti_MVC.Controllers
 {
+    /// <summary>
+    /// Non-functional Example controller
+    /// </summary>
     public class AnimalsController : Controller
     {
         private readonly Loppuprojekti_MVCContext _context;
