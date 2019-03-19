@@ -2,27 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Loppuprojekti_MVC.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Loppuprojekti_MVC.Controllers
 {
-    public class AnimalsController : Controller
+    public class SpeciesController : Controller
     {
         private readonly Loppuprojekti_MVCContext _context;
 
-        public AnimalsController(Loppuprojekti_MVCContext context)
+        public SpeciesController(Loppuprojekti_MVCContext context)
         {
             _context = context;
         }
 
-        /// <summary> Original Animal Controller </summary>
-        // GET: Animals
+        /// <summary> Red List Species GET </summary>
+        // GET: Species
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Animal.ToListAsync());
+            return View(await _context.Species.ToListAsync());
         }
 
         // GET: Animals/Details/5
@@ -33,8 +32,8 @@ namespace Loppuprojekti_MVC.Controllers
                 return NotFound();
             }
 
-            var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var animal = await _context.Species
+                .FirstOrDefaultAsync(m => m.Taxonid== id);
             if (animal == null)
             {
                 return NotFound();
@@ -49,20 +48,19 @@ namespace Loppuprojekti_MVC.Controllers
             return View();
         }
 
-        // POST: Animals/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //not in use
+        // POST: Species/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CommonName,ScientificName,Kingdom,Phylum,Class,Order,Family,Genus")] Animal animal)
+        public async Task<IActionResult> Create([Bind("Taxonid,KingdomName,PhylumName,ClassName,OrderName,FamilyName,GenusName,ScientificName,InfraRank,Category")] Species species)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(animal);
+                _context.Add(species);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(animal);
+            return View(species);
         }
 
         // GET: Animals/Edit/5
@@ -149,5 +147,6 @@ namespace Loppuprojekti_MVC.Controllers
         {
             return _context.Animal.Any(e => e.Id == id);
         }
+
     }
 }
