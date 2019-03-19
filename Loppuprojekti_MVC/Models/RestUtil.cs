@@ -18,12 +18,12 @@ namespace Loppuprojekti_MVC.Models
         //const token = "9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee";
 
         //GET
-        // needed to get the species from IUCN 
+        // needed to get the all species from IUCN 
+        //IUCN returns JSON Objects!
         public List<Species> Species()
         {
-            //
+             string json = "";
 
-            string json = "";
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -33,10 +33,12 @@ namespace Loppuprojekti_MVC.Models
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-            List<Species> res;
-            res = JsonConvert.DeserializeObject<List<Species>>(json);
-            return res;
+            SpeciesRootObject res; 
+            res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
+            return res.Species;
         }
+
+
 
     }
 }

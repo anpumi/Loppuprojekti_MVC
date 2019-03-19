@@ -13,8 +13,7 @@ namespace Loppuprojekti_MVC.Controllers
 {
     public class SpeciesController : Controller
     {
-        //only search logic
-        //GET logic in Models.RestUtil
+        //only search logic, GET logic in Models.RestUtil
         public ActionResult SpeciesIndex() 
         {
             RestUtil _rs = new RestUtil();
