@@ -21,6 +21,8 @@ namespace Loppuprojekti_MVC.Models
         // needed to get the species from IUCN 
         public List<Species> Species()
         {
+            //
+
             string json = "";
             using (var client = new HttpClient())
             {

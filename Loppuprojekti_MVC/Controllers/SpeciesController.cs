@@ -8,18 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
+
 namespace Loppuprojekti_MVC.Controllers
 {
     public class SpeciesController : Controller
     {
- 
+        //only search logic
+        //GET logic in Models.RestUtil
         public ActionResult SpeciesIndex() 
         {
-            ViewBag.Title = "IUCN Red List";
-            //tähän kutsu Models.RestUtils - 
-            //niin kuin C# junissa? 
-            
-            return View();
+            RestUtil _rs = new RestUtil();
+            return View(_rs.Species());
         }
 
     }
