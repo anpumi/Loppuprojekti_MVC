@@ -33,7 +33,7 @@ namespace Loppuprojekti_MVC.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.Taxonid == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (animal == null)
             {
                 return NotFound();
@@ -87,7 +87,7 @@ namespace Loppuprojekti_MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CommonName,ScientificName,Kingdom,Phylum,Class,Order,Family,Genus")] Animal animal)
         {
-            if (id != animal.Taxonid)
+            if (id != animal.Id)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace Loppuprojekti_MVC.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AnimalExists(animal.Taxonid))
+                    if (!AnimalExists(animal.Id))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace Loppuprojekti_MVC.Controllers
             }
 
             var animal = await _context.Animal
-                .FirstOrDefaultAsync(m => m.Taxonid == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (animal == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace Loppuprojekti_MVC.Controllers
 
         private bool AnimalExists(int id)
         {
-            return _context.Animal.Any(e => e.Taxonid == id);
+            return _context.Animal.Any(e => e.Id == id);
         }
     }
 }
