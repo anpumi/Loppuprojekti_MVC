@@ -11,13 +11,21 @@ using Newtonsoft.Json;
 
 namespace Loppuprojekti_MVC.Controllers
 {
+     //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
-        //only search logic, GET logic in Models.RestUtil
+        // GET species
         public ActionResult SpeciesIndex() 
         {
             RestUtil _rs = new RestUtil();
             return View(_rs.Species());
+        }
+
+        // GET individual info for individual species
+        public ActionResult SpeciesIndex(string name)
+        {
+            RestUtil _rs = new RestUtil();
+            return View(_rs.SingleSpecies());
         }
 
     }
