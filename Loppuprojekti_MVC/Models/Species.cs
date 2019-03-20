@@ -40,7 +40,6 @@ namespace Loppuprojekti_MVC.Models
         /// <summary> The Red List Category </summary>
         [JsonProperty("category")]
         public string Category { get; set; }
-
     }
 
     /// <summary>The SpeciesRootObject property represents the JSON Objects the GET returns.</summary>
@@ -51,6 +50,6 @@ namespace Loppuprojekti_MVC.Models
         [JsonProperty("page")]
         public string Page { get; set; }
         [JsonProperty("result")]
-        public List<Species> Species { get; set; }
+        public List<Species> Result { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace Loppuprojekti_MVC.Models
             }
             SpeciesRootObject res; 
             res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
-            return res.Species;
+            return res.Result;
         }
 
         //GET individual info for a species
@@ -57,7 +57,7 @@ namespace Loppuprojekti_MVC.Models
             }
             IndividualSpeciesRoot res;
             res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
-            return res.IndividualSpecies;
+            return res.Result;
         }
 
 
