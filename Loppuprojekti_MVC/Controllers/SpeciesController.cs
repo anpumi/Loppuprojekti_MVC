@@ -18,8 +18,12 @@ namespace Loppuprojekti_MVC.Controllers
         // /Species
         public ActionResult SpeciesIndex() 
         {
+            //tää ei toimi
             RestUtil _rs = new RestUtil();
-            return View(_rs.Species());
+            var _species = _rs.Species();
+            
+            return View(_species);
+            //return View(_rs.Species().OrderBy(s => s.ScientificName));
         }
 
         // GET individual info for individual species

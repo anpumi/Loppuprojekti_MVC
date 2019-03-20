@@ -40,7 +40,7 @@ namespace Loppuprojekti_MVC.Models
 
         //GET individual info for a species
         // /species/name
-        public List<Species> SingleSpecies(string name)
+        public List<IndividualSpecies> SingleSpecies(string name)
         {
             string json = "";
             string searchTerm = name;
@@ -55,9 +55,9 @@ namespace Loppuprojekti_MVC.Models
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
-            SpeciesRootObject res;
-            res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
-            return res.Species;
+            IndividualSpeciesRoot res;
+            res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
+            return res.IndividualSpecies;
         }
 
 

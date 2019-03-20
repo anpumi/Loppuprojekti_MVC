@@ -1,12 +1,23 @@
-﻿@model Loppuprojekti_MVC.Models.Species
+﻿@model IEnumerable<Loppuprojekti_MVC.Models.Species>
+
+@using Loppuprojekti_MVC.Models;
 
 @{
     ViewData["Title"] = "SpeciesIndex";
 }
 
-<h1>SpeciesIndex</h1>
+<h1>All endangered Species: Index</h1>
 
-<div>
+@foreach (var s in Model)
+{
+    <tr>
+        <td>@s.ScientificName</td>
+    </tr>
+}
+
+
+
+@*<div>
     <h4>Species</h4>
     <hr />
     <dl class="row">
@@ -83,7 +94,7 @@
             @Html.DisplayFor(model => model.Category)
         </dd>
     </dl>
-</div>
+</div>*@
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     <a asp-action="Index">Back to List</a>

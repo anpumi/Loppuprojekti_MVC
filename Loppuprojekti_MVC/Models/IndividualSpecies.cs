@@ -9,7 +9,7 @@ namespace Loppuprojekti_MVC.Models
     public class IndividualSpecies
     {
         public int Taxonid { get; set; }
-        public string Scientific_name { get; set; }
+        public string ScientificName { get; set; }
         public string KingdomName { get; set; }
         public string PhylumName { get; set; }
         public string ClassName { get; set; }
