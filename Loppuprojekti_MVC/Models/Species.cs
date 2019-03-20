@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Loppuprojekti_MVC.Models
 {
-    /// <summary>
-    /// RedList Species
-    /// </summary>
+    /// <summary> RedList Species </summary>
     public class Species
     {
-        /// <summary>The TaxonId property represents the Id for teh Species/Taxon.</summary>
+        /// <summary>The TaxonId property represents the Id for the Species/Taxon.</summary>
         /// <value>The TaxonId property gets set with the int of the GET call.</value>
         public int Taxonid { get; set; }
         public string KingdomName { get; set; }
@@ -28,5 +26,13 @@ namespace Loppuprojekti_MVC.Models
         /// <summary> The Red List Category </summary>
         public string Category { get; set; }
 
+    }
+
+    /// <summary>The SpeciesRootObject property represents the JSON Objects the GET returns.</summary>
+    public class SpeciesRootObject
+    {
+        public int Count { get; set; }
+        public string Page { get; set; }
+        public List<Species> Species { get; set; }
     }
 }
