@@ -68,6 +68,9 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                     name: "Species",
                     template: "{controller=Species}/{action=SpeciesIndex}");
+                routes.MapRoute(
+                    name: "SingleSpecies",
+                    template: "{controller=Species}/{action=SingleSpecies}");
             });
         }
     }

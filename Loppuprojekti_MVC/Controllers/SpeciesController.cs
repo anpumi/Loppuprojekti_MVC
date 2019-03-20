@@ -15,6 +15,7 @@ namespace Loppuprojekti_MVC.Controllers
     public class SpeciesController : Controller
     {
         // GET species
+        // /Species
         public ActionResult SpeciesIndex() 
         {
             RestUtil _rs = new RestUtil();
@@ -22,10 +23,12 @@ namespace Loppuprojekti_MVC.Controllers
         }
 
         // GET individual info for individual species
-        public ActionResult SpeciesIndex(string name)
+        // /Species/SingleSpecies
+        // TODO: parametria ei ole lisätty Startup.cs routeen...
+        public ActionResult SingleSpecies(string name)
         {
             RestUtil _rs = new RestUtil();
-            return View(_rs.SingleSpecies());
+            return View(_rs.SingleSpecies(name));
         }
 
     }

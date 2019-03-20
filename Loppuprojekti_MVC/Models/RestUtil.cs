@@ -40,19 +40,18 @@ namespace Loppuprojekti_MVC.Models
 
         //GET individual info for a species
         // /species/name
-        public List<Species> SingleSpecies()
+        public List<Species> SingleSpecies(string name)
         {
             string json = "";
-
-            //tälle pitäisi tehdä jtn että saa sen yhden lajin...
-
+            string searchTerm = name;
 
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //urli oikea
-                //nyt pitäisi vaihtaa se niin että voi hakea millä vain nimellä
+                //kovakoodattu testi versio
                 var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/loxodonta%20africana?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                //oikea on alla
+                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/{searchTerm}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
