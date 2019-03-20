@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace Loppuprojekti_MVC.Models
 {
-    /// <summary>
-    /// RedList Species
-    /// </summary>
+    /// <summary> RedList Species </summary>
     public class Species
     {
         /// <summary>The TaxonId property represents the Id for the Species/Taxon.</summary>
