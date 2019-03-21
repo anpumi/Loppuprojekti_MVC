@@ -17,9 +17,7 @@ namespace Loppuprojekti_MVC.Models
         //const url = $"http://apiv3.iucnredlist.org/api/v3/";
         //const token = "9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee";
 
-        //GET action for all species from IUCN 
-        //IUCN returns JSON Objects!
-        // /species/
+        //GET action for all species from IUCN, /species/
         public List<Species> Species()
         {
              string json = "";
