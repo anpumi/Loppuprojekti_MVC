@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Loppuprojekti_MVC.Models
 {
     //We chose to have nice C# names, thus JSOn serializer cannot recognize them (they are not precisely the same) and they are defined with [JsonProperty("")].
-    
+
     /// <summary> RedList Species </summary>
     public class Species
     {

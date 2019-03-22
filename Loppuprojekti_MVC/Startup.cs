@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Loppuprojekti_MVC.Models;
+using System.Web.Mvc;
+using System.Security.Policy;
+using System.Web;
 
 namespace Loppuprojekti_MVC
 {
@@ -71,7 +69,12 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                     name: "SingleSpecies",
                     template: "{controller=Species}/{action=SingleSpecies}");
+                routes.MapRoute(
+                    name: "FirstLetterSearch",
+                    template: "{controller=Country}/{action=CountryIndex}/{firstLetter?}");
+                routes.MapRoute(
+                    name: "Countries",
+                    template: "{controller=Country}/{action=CountryIndex}");
             });
-        }
     }
-}
+    } }
