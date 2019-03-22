@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Loppuprojekti_MVC.Models
 {
@@ -14,4 +16,5 @@ namespace Loppuprojekti_MVC.Models
         public string PopulationTrend { get; set; }
 
     }
+
 }

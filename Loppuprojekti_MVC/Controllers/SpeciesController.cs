@@ -25,12 +25,10 @@ namespace Loppuprojekti_MVC.Controllers
 
         // GET individual info for individual species, /Species/SingleSpecies
         // TODO: parametria ei ole lisätty Startup.cs routeen...
-        public ActionResult SingleSpecies(string name)
+        public ActionResult SingleSpecies(string scName)
         {
-            //RestUtil _is = new RestUtil().SingleSpecies().Single(i => i.MainCommonName == name);
-
             RestUtil _rs = new RestUtil();
-            var _as = _rs.SingleSpecies(name);
+            var _as = _rs.SingleSpecies(scName);
 
             //palauttaa lista, kutsu eka olio
             return View(_as.FirstOrDefault());
