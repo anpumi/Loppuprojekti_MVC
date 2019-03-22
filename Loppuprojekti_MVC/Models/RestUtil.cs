@@ -38,10 +38,10 @@ namespace Loppuprojekti_MVC.Models
 
         //GET individual info for a species
         // /species/name
-        public List<IndividualSpecies> SingleSpecies(string name)
+        public List<IndividualSpecies> SingleSpecies(string searchString)
         {
             string json = "";
-            string searchTerm = name;
+            string searchTerm = searchString;
 
             using (var client = new HttpClient())
             {

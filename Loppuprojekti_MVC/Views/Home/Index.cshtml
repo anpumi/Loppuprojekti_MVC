@@ -1,4 +1,6 @@
-﻿@{
+﻿@*@model Loppuprojekti_MVC.Models.IndividualSpecies*@
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <head>
@@ -6,21 +8,32 @@
 </head>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Happy Birds!</h1>
+    <h1 class="display-4">Welcome to Endangered Planet</h1>
 </div>
 
 <div>Testing search button - Tuotehaku version</div>
 
 @*TODO: Search with common name*@
-@using (Html.BeginForm("ID ja nimi", "NSearch", FormMethod.Post))
+@using (Html.BeginForm("ID ja nimi", "Species", "SingleSpecies", FormMethod.Get))
 {
     <h4>Scientific name:</h4>
     <input type="text" name="ScientificName" />
     @*<h4>Common name:</h4>
-    <input type="text" name="MainCommonName" />*@
-    <input type="submit" name="Search" />
+        <input type="text" name="MainCommonName" />*@
+    <input type="submit" name="Search" value="Search" id="NSearch" />
 }
 
+@*<div>Testing: movie search model</div>
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <p>
+            <select asp-for="ScientificName" asp-items="Model.ScientificName">
+                <option value="">All</option>
+            </select>
+
+            Title: <input type="text" name="searchString">
+            <input type="submit" value="Filter" />
+        </p>
+    </form>*@
 
 <div>Testing search button...</div>
 <div class="container">

@@ -10,9 +10,16 @@ namespace Loppuprojekti_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string searchTerms)
         {
-            return View();
+            if (string.IsNullOrEmpty(searchTerms))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("SingleSpecies", "Species");
+            }
         }
 
         public IActionResult Privacy()
@@ -29,9 +36,9 @@ namespace Loppuprojekti_MVC.Controllers
         //search field
         //POST from search field, forwards parametres to GET in SpeciesController/RestUtil??
         //returns 
+        [HttpGet]
         public ActionResult NSearch(NameSearch searchTerms)
         {
-
             if (string.IsNullOrEmpty(searchTerms.ScientificName))
             {
                 ModelState.AddModelError("", "Please search with a name.");
@@ -39,9 +46,9 @@ namespace Loppuprojekti_MVC.Controllers
             }
             else
             {
-                //viekö hakuehdot mukanaan?
                 return RedirectToAction("SingleSpecies","Species");
             }
+
         }
     }
 }

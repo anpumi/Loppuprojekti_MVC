@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace Loppuprojekti_MVC.Models
 {
@@ -13,5 +15,6 @@ namespace Loppuprojekti_MVC.Models
         public string Category { get; set; }
         public string PopulationTrend { get; set; }
 
+        public SelectList ScientificNames;
     }
 }
