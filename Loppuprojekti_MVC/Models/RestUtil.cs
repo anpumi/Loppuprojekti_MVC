@@ -38,27 +38,53 @@ namespace Loppuprojekti_MVC.Models
 
         //GET individual info for a species
         // /species/name
-        public List<IndividualSpecies> SingleSpecies(string searchString)
+        public List<IndividualSpecies> SingleSpecies(string searchTerms)
         {
             string json = "";
-            string searchTerm = searchString;
+            //string searchTerm = searchTerms;
 
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //kovakoodattu testi versio
-                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/loxodonta%20africana?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/loxodonta%20africana?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
                 //oikea on alla
-                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/{searchTerm}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/{searchTerms}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
+
+            //tässä kusee.
+            //ei auta vaikka yrittää poistaa L<> tsydeemit
             IndividualSpeciesRoot res;
             res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
             return res.Result;
+
+
+            //voisi yrittää alla olevaa: & Controlleriin merkintä: .rows[0] //ei toimi
+
+            //IndividualSpeciesRoot res;
+            //res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
+            //return res.Result;
         }
 
+        //kovakoodattu testi versio
+        //public List<IndividualSpecies> SingleSpecies(string searchTerms)
+        //{
+        //    string json = "";
 
+        //    using (var client = new HttpClient())
+        //    {
+        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/loxodonta%20africana?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+        //        var responseString = response.Content.ReadAsStringAsync().Result;
+        //        json = responseString;
+        //    }
+
+        //    IndividualSpeciesRoot res;
+        //    res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
+        //    return res.Result;
+        //}
 
     }
 }

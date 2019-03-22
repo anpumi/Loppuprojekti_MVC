@@ -18,7 +18,9 @@ namespace Loppuprojekti_MVC.Controllers
             }
             else
             {
-                return RedirectToAction("SingleSpecies", "Species");
+                //{@id=id}
+                //return RedirectToAction("SingleSpecies", "Species", new { searchTerms = "" });  //ei toimi
+                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms }); //parameter is transmitted down, this is okay..?
             }
         }
 
@@ -33,22 +35,20 @@ namespace Loppuprojekti_MVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        //search field
-        //POST from search field, forwards parametres to GET in SpeciesController/RestUtil??
-        //returns 
-        [HttpGet]
-        public ActionResult NSearch(NameSearch searchTerms)
-        {
-            if (string.IsNullOrEmpty(searchTerms.ScientificName))
-            {
-                ModelState.AddModelError("", "Please search with a name.");
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return RedirectToAction("SingleSpecies","Species");
-            }
+        //TODO: remove, unused
+        //[HttpGet]
+        //public ActionResult NSearch(NameSearch searchTerms)
+        //{
+        //    if (string.IsNullOrEmpty(searchTerms.ScientificName))
+        //    {
+        //        ModelState.AddModelError("", "Please search with a name.");
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("SingleSpecies","Species");
+        //    }
 
-        }
+        //}
     }
 }
