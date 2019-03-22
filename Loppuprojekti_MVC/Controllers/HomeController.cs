@@ -18,9 +18,7 @@ namespace Loppuprojekti_MVC.Controllers
             }
             else
             {
-                //{@id=id}
-                //return RedirectToAction("SingleSpecies", "Species", new { searchTerms = "" });  //ei toimi
-                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms }); //parameter is transmitted down, this is okay..?
+                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms }); 
             }
         }
 

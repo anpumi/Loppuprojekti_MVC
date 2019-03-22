@@ -36,7 +36,7 @@ namespace Loppuprojekti_MVC.Models
         public int PublishedYear { get; set; }
         [JsonProperty("assessment_date")]
         public string AssessmentDate { get; set; }
-        /// <summary> The Red List Category </summary>
+        /// <summary> The Red List Category: CR-cirtically endangered, EN-Endangered, CO-collapsed, NT-Near threatened, VU-vulnerable, DD-Data Deficient, LC-Least concerned, NE-not evaluated, </summary>
         [JsonProperty("category")]
         public string Category { get; set; }
         [JsonProperty("criteria")]
@@ -57,9 +57,9 @@ namespace Loppuprojekti_MVC.Models
         [JsonProperty("reviewer")]
         public string Reviewer { get; set; }
         [JsonProperty("aoo_km2")]
-        public object AooKm2 { get; set; }
+        public object AooKm2 { get; set; } //Area of occupancy
         [JsonProperty("eoo_km2")]
-        public object EooKm2 { get; set; }
+        public object EooKm2 { get; set; } //extent of occurance
         [JsonProperty("elevation_upper")]
         public object ElevationUpper { get; set; }
         [JsonProperty("elevation_lower")]
