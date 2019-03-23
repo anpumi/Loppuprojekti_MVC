@@ -9,6 +9,7 @@ namespace Loppuprojekti_MVC.Models
     //We chose to have nice C# names, thus JSOn serializer cannot recognize them (they are not precisely the same) and they are defined with [JsonProperty("")].
     //Species by country
     // http://apiv3.iucnredlist.org/api/v3/country/getspecies/AZ?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee
+    
 
     public class CountrySpecies
     {

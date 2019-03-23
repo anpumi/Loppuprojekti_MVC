@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Loppuprojekti_MVC.Models;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace Loppuprojekti_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        //private readonly IHtmlLocalizer<HomeController> _localizer;
+
+        //public HomeController(HtmlLocalizer<HomeController> localizer)
+        //{
+        //    _localizer = localizer;
+        //}
+
         public IActionResult Index(string searchTerms)
         {
             if (string.IsNullOrEmpty(searchTerms))

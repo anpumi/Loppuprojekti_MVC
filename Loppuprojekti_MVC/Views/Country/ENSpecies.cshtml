@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Loppuprojekti_MVC.Models.CountrySpecies>
+@{
+    ViewData["Title"] = "ENSpecies";
+}
+<h1>List of endangered species in @ViewBag.C</h1>
+
+@foreach (var s in Model)
+{
+    <ul>
+        @s.ScientificName
+    </ul>
+}
+

@@ -1,4 +1,9 @@
-﻿@model IEnumerable<Loppuprojekti_MVC.Models.CountryList>
+﻿@*@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization;
+
+@inject IViewLocalizer Localizer*@
+
+@model IEnumerable<Loppuprojekti_MVC.Models.CountryList>
 @{
     ViewBag.Title = "Country";
     string letters = ViewBag.Letters;
@@ -25,8 +30,11 @@
 {
     <ul>
         <tr>
-            <td>@Html.DisplayFor(modelItem => s.Country)</td>
-            <td>@Html.ActionLink("Details", "Country", new { country = s.IsoCode })</td>
+            <td>@Html.ActionLink(s.Country,"Country", new { country = s.IsoCode })</td>
+
+            @*<td>@Html.DisplayFor(modelItem => s.Country)</td>
+
+            <td>@Html.ActionLink("Details", "Country", new { country = s.IsoCode })</td>*@
         </tr>
 
     </ul>

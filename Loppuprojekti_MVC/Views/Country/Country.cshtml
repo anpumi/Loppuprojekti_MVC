@@ -1,16 +1,27 @@
 ﻿@model IEnumerable<Loppuprojekti_MVC.Models.CountrySpecies>
+@*@model IEnumerable<Loppuprojekti_MVC.Models.CountryList>*@
 
 @{
     ViewData["Title"] = "Country";
 }
-<h1>List of endangered species in </h1>
+<h1>List of all threatened species in @ViewBag.C</h1>
+
+
+    @Html.ActionLink("Extinct", "EXSpecies") |
+    @Html.ActionLink("Extinct in the wild", "EWSpecies") |
+    @Html.ActionLink("Critically Endangered", "CRSpecies") |
+    @Html.ActionLink("Endangered", "ENSpecies") |
+    @Html.ActionLink("Vulnerable", "VUSpecies") |
+
+
+
 
 @foreach (var s in Model)
-{
-<tr>
-<td>@s.ScientificName</td>
-</tr>
-}
+    {
+        <ul>
+            @s.ScientificName
+        </ul>
+    }
 
 @*<table class="table">
         <thead>
@@ -38,6 +49,6 @@
             }
         </tbody>
     </table>*@
-/**/
+
 
 

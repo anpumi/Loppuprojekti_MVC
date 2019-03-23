@@ -9,6 +9,7 @@ using Loppuprojekti_MVC.Models;
 using System.Web.Mvc;
 using System.Security.Policy;
 using System.Web;
+using System.Globalization;
 
 namespace Loppuprojekti_MVC
 {
@@ -31,6 +32,9 @@ namespace Loppuprojekti_MVC
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddJsonLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc().AddViewLocalization();
+            CultureInfo.CurrentCulture = new CultureInfo("fi-FI");
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -43,16 +47,19 @@ namespace Loppuprojekti_MVC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            var cultureInfo = new CultureInfo("fi-FI");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            //    app.UseHsts();
+            //}
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -75,6 +82,9 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                     name: "Countries",
                     template: "{controller=Country}/{action=CountryIndex}");
+                routes.MapRoute(
+                    name: "ENSpecies",
+                    template: "{controller=Country}/{action=ENSpecies}");
             });
     }
     } }
