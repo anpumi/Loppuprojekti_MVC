@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Loppuprojekti_MVC.Models
 {
+    //this class is not used
     public class NameSearch
     {
         public int Taxonid { get; set; }

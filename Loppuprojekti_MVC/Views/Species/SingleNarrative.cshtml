@@ -1,0 +1,71 @@
+﻿@model Loppuprojekti_MVC.Models.SpeciesNarrative
+
+@using Loppuprojekti_MVC.Models;
+
+
+@{
+    ViewData["Title"] = "SingleNarrative";
+}
+
+<h1>Additional information</h1>
+
+<div>
+    <h4>Habitats, threats and conservation measures</h4>
+    <hr />
+    <dl class="row">
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Taxonomicnotes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Taxonomicnotes)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rationale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rationale)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Geographicrange)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Geographicrange)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Population)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Population)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Populationtrend)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Populationtrend)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Habitat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Habitat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Threats)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Threats)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ConservationMeasures)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ConservationMeasures)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Home page</a>
+</div>
+<div>
+    @Html.ActionLink("Back to Home", "Index")
+</div>
