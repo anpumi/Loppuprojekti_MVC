@@ -18,7 +18,7 @@ namespace Loppuprojekti_MVC.Controllers
             }
             else
             {
-                return RedirectToAction("SingleNarrative", "Species", new { @searchTerms = searchTerms });
+                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms });
             }
 
         }
