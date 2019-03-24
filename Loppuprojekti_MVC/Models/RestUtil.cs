@@ -36,7 +36,6 @@ namespace Loppuprojekti_MVC.Models
         // /species/name
         public List<IndividualSpecies> SingleSpecies(string searchTerms)
         {
-
             //TODO: virhekäsittely
             string json = "";
 
@@ -54,6 +53,26 @@ namespace Loppuprojekti_MVC.Models
             res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
             return res.Result;
 
+        }
+
+        //GET narrative info for a species
+        // /species/name
+        public List<SpeciesNarrative> SingleNarrative(string searchTerms)
+        {
+            //TODO: virhekäsittely
+            string json = "";
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/narrative/{searchTerms}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+
+            SpeciesNarrativeRoot res;
+            res = JsonConvert.DeserializeObject<SpeciesNarrativeRoot>(json);
+            return res.Result;
         }
 
     }

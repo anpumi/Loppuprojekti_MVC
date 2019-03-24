@@ -32,5 +32,17 @@ namespace Loppuprojekti_MVC.Controllers
             return View(_as[0]);
             //return View(_as.FirstOrDefault());
         }
+
+        // GET individual info for individual species, /Species/SingleSpecies
+        public ActionResult SingleNarrative(string searchTerms)
+        {
+            RestUtil _rs = new RestUtil();
+            var _as = _rs.SingleNarrative(searchTerms);
+
+            //return View(_as);
+            //return View(_as.FirstOrDefault());
+            return View(_as[0]);
+        }
+
     }
 }
