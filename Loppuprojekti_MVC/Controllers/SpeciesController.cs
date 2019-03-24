@@ -39,7 +39,6 @@ namespace Loppuprojekti_MVC.Controllers
             RestUtil _rs = new RestUtil();
             var _as = _rs.SingleNarrative(searchTerms);
 
-            //return View(_as);
             //return View(_as.FirstOrDefault());
             return View(_as[0]);
         }

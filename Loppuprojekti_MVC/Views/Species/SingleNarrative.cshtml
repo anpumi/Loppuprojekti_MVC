@@ -7,24 +7,18 @@
     ViewData["Title"] = "SingleNarrative";
 }
 
-<h1>SingleNarrative</h1>
+<h1>Additional information</h1>
 
 <div>
-    <h4>SpeciesNarrative</h4>
+    <h4>Habitats, threats and conservation measures</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species_id)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species_id)
-        </dd>
-        <dt class="col-sm-2">
+        @*<dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Taxonomicnotes)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Taxonomicnotes)
-        </dd>
+        </dd>*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Rationale)
         </dt>
@@ -70,6 +64,8 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Home page</a>
+</div>
+<div>
+    @Html.ActionLink("Back to Home", "Index")
 </div>
