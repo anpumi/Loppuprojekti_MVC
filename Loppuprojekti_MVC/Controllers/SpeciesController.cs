@@ -43,5 +43,17 @@ namespace Loppuprojekti_MVC.Controllers
             return View(_as[0]);
         }
 
+        //TODO: Get this working, would be funny :) 
+        // GET IUCN page for individual species
+        public ActionResult IUCNurl(string searchTerms)
+        {
+            RestUtil _rs = new RestUtil();
+            var _as = _rs.IUCNurl(searchTerms);
+
+            //ViewBag.Link = _as;
+            //return View(_as.Rlurl);
+            return ViewBag(_as.Rlurl);
+        }
+
     }
 }

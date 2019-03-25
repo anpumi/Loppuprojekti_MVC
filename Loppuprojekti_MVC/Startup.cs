@@ -88,6 +88,9 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                     name: "Map",
                     template: "{controller=Map}/{action=Country}");
+                routes.MapRoute(
+                   name: "Resources",
+                   template: "{controller=Resources}/{action=ResourcesIndex}");
             });
     }
     } }
