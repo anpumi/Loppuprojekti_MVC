@@ -1,10 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    /*background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));*/
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Sticky footer styles
@@ -41,25 +43,33 @@ html {
   min-height: 100%;
 }
 
+
 body {
     background-image: url("https://img.freepik.com/free-vector/bright-background-with-dots_1055-3132.jpg?size=338&ext=jpg");
     /*background-image: url("https://png.pngtree.com/back_origin_pic/04/14/48/7dda5f8e8ac3a7d9922d5354c4446ce0.jpg");*/
     /*background-image: linear-gradient(white, grey);*/
     /* Margin bottom by footer height */
+    /*background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-color: white;
     margin-bottom: 60px;
 }
+
+h1, h2{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+}
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
 }
 
 /* Search bar styles
