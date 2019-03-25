@@ -143,10 +143,14 @@
     htmlAttributes: null)
 </div>
 
-@*@Html.ActionLink( linkText: "Narrative and information",
-    actionName:"SingleNarrative",
+@*<p>Alla oleva linkki IUCN sivulle ei vielä toimi..</p>
+<div>
+    @Html.ActionLink( linkText: "IUCN page",
+    actionName: "IUCNurl",
     controllerName: "Species",
-    htmlAttributes: null)*@
+    routeValues: new { searchTerms = Model.ScientificName },
+    htmlAttributes: null)
+</div>*@
 
 @*<div>
         <a asp-action="Index">Back to Home page</a>

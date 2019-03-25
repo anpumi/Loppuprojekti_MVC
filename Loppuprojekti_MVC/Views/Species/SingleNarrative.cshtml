@@ -13,59 +13,59 @@
     <h4>Habitats, threats and conservation measures</h4>
     <hr />
     <dl class="row">
-        @*<dt class="col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Taxonomicnotes)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Taxonomicnotes)
-        </dd>*@
+            @Html.Raw(Model.Taxonomicnotes)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Rationale)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Rationale)
+            @Html.Raw(Model.Rationale)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Geographicrange)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Geographicrange)
+            @Html.Raw(Model.Geographicrange)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Population)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Population)
+            @Html.Raw(Model.Population)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Populationtrend)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Populationtrend)
+            @Html.Raw(Model.Populationtrend)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Habitat)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Habitat)
+            @Html.Raw(Model.Habitat)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Threats)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Threats)
+            @Html.Raw(Model.Threats)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ConservationMeasures)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ConservationMeasures)
+            @Html.Raw(Model.ConservationMeasures)
         </dd>
     </dl>
 </div>
-<div>
+@*<div>
     <a asp-action="Index">Back to Home page</a>
-</div>
+</div>*@
 <div>
-    @Html.ActionLink("Back to Home", "Index")
+    @Html.ActionLink("Back to Home", "Index", "Home")
 </div>

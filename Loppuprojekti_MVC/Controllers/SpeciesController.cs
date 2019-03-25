@@ -50,7 +50,9 @@ namespace Loppuprojekti_MVC.Controllers
             RestUtil _rs = new RestUtil();
             var _as = _rs.IUCNurl(searchTerms);
 
-            return View(_as);
+            //ViewBag.Link = _as;
+            //return View(_as.Rlurl);
+            return ViewBag(_as.Rlurl);
         }
 
     }
