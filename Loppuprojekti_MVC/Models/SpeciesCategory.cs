@@ -15,7 +15,8 @@ namespace Loppuprojekti_MVC.Models
         public int Taxonid { get; set; }
         [JsonProperty("scientific_name")]
         public string ScientificName { get; set; }
-        public string subspecies { get; set; }
+        [JsonProperty("subspecies")]
+        public string Subspecies { get; set; }
         [JsonProperty("rank")]
         public string Rank { get; set; }
         [JsonProperty("subpopulation")]

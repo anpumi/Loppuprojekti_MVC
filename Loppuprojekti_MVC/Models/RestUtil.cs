@@ -66,9 +66,6 @@ namespace Loppuprojekti_MVC.Models
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/narrative/{searchTerms}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
-                //below a test version, trying to remove the html from json: ?json=true doesn't work :/
-                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/narrative/{searchTerms}?json=true?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
-
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
             }
@@ -97,6 +94,30 @@ namespace Loppuprojekti_MVC.Models
             Link res;
             res = JsonConvert.DeserializeObject<Link>(json);
             return res;
+        }
+
+        //TODO: Get this working for statistics
+        // GET IUCN for count of species in different vulnerability classes
+        //searchTerm: vulnerability class
+        public List<SpeciesCategory> SCategory(string searchTerms)
+        {
+            //TODO: virhekäsittely
+            string json = "";
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/category/{searchTerms}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/category/VU?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+
+            SpeciesCategoryRoot res;
+            res = JsonConvert.DeserializeObject<SpeciesCategoryRoot>(json);
+            return res.Result;
+
         }
 
     }

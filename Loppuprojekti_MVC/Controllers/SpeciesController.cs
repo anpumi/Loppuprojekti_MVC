@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 
 namespace Loppuprojekti_MVC.Controllers
 {
+    //TODO: Initialize RestUtil in field, then just call it in all the methods
+
      //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
@@ -53,6 +55,16 @@ namespace Loppuprojekti_MVC.Controllers
             //ViewBag.Link = _as;
             //return View(_as.Rlurl);
             return ViewBag(_as.Rlurl);
+        }
+
+        //TODO: Get this working for statistics
+        // GET IUCN for count of species in different vulnerability classes
+        //searchTerm: vulnerability class
+        public ActionResult SCategory(string searchTerms)
+        {
+            RestUtil _rs = new RestUtil();
+            var _sc = _rs.SCategory(searchTerms);
+            return ViewBag(_sc.Count);
         }
 
     }
