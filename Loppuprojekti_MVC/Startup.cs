@@ -91,6 +91,10 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                    name: "Resources",
                    template: "{controller=Resources}/{action=ResourcesIndex}");
+                routes.MapRoute(
+                   name: "Bubble",
+                   template: "{controller=Bubble}/{action=Bubble}");
+                
             });
     }
     } }
