@@ -16,10 +16,13 @@ namespace Loppuprojekti_MVC.Controllers
      //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
+        private RestUtil _rs = new RestUtil();
+        //PartialView
+        IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
+
         // GET species, /Species
         public ActionResult SpeciesIndex() 
         {
-            RestUtil _rs = new RestUtil();
             var _species = _rs.Species();
             
             return View(_species);
@@ -28,13 +31,12 @@ namespace Loppuprojekti_MVC.Controllers
         // GET individual info for individual species, /Species/SingleSpecies
         public ActionResult SingleSpecies(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _as = _rs.SingleSpecies(searchTerms);
 
             //PartialView
-            IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
-            vm.Species = _as.FirstOrDefault();
+            vm.Species = _as.FirstOrDefault(); 
             vm.Narrative = _rs.SingleNarrative(searchTerms).FirstOrDefault();
+            vm.Link = _rs.IUCNurl(searchTerms);
 
             return View(vm);
             //return View(_as[0]); //ennen partialView:tä
@@ -44,9 +46,7 @@ namespace Loppuprojekti_MVC.Controllers
         // GET individual info for individual species, /Species/SingleSpecies
         public ActionResult SingleNarrative(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _as = _rs.SingleNarrative(searchTerms);
-
             return View(_as[0]);
         }
 
@@ -54,12 +54,11 @@ namespace Loppuprojekti_MVC.Controllers
         // GET IUCN page for individual species
         public ActionResult IUCNurl(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
-            var _as = _rs.IUCNurl(searchTerms);
+            var _ls = _rs.IUCNurl(searchTerms);
 
             //ViewBag.Link = _as;
-            //return View(_as.Rlurl);
-            return ViewBag(_as.Rlurl);
+            return View(_ls.Rlurl);
+            //return ViewBag(_ls.Rlurl);
         }
 
         //TODO: Get this working for statistics

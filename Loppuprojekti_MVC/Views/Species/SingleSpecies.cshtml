@@ -6,10 +6,56 @@
     ViewData["Title"] = "SingleSpecies";
 }
 
-<h1>Species information</h1>
-@*<p>Tee table missä kaksi riviä</p>*@
 
 <div>
+    <h1>@Html.DisplayFor(model => model.Species.ScientificName)</h1>
+    <h3>@Html.DisplayFor(model => model.Species.MainCommonName)</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Population trend</th>
+                <th scope="col">System</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Species.Category) : @Html.DisplayFor(model => model.Species.Category)
+                </td>
+                <td>@Html.DisplayFor(model => model.Species.PopulationTrend)</td>
+                <td> @Html.DisplayNameFor(model => model.Species.MarineSystem) @Html.DisplayFor(model => model.Species.MarineSystem)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>@Html.DisplayNameFor(model => model.Species.FreshwaterSystem) @Html.DisplayFor(model => model.Species.FreshwaterSystem)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>@Html.DisplayNameFor(model => model.Species.TerrestrialSystem) @Html.DisplayFor(model => model.Species.TerrestrialSystem)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@await  Html.PartialAsync("_Link", Model.Link)
+@*<p>Separate link to Narrative information</p>*@
+<div>
+    @Html.ActionLink( linkText: "Narrative and information",
+        actionName:"SingleNarrative",
+        controllerName: "Species",
+        routeValues: new { searchTerms = Model.Species.ScientificName },
+        htmlAttributes: null)
+</div>
+@*<p>PartialView to Narrative</p>*@
+@await Html.PartialAsync("_SingleNarrative", Model.Narrative)
+
+
+
+@*<div>
+    <h1>Species information</h1>
     <h4>@Html.DisplayFor(model => model.Species.MainCommonName)</h4>
     <hr />
     <dl class="row">
@@ -19,7 +65,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Species.ScientificName)
         </dd>
-        @*<dt class="col-sm-2">
+        <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.KingdomName)
             </dt>
             <dd class="col-sm-10">
@@ -54,7 +100,19 @@
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.GenusName)
-            </dd>*@
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MainCommonName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MainCommonName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Authority)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Authority)
+            </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Species.PublishedYear)
         </dt>
@@ -73,6 +131,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Species.Category)
         </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Criteria)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Criteria)
+            </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Species.PopulationTrend)
         </dt>
@@ -97,26 +161,17 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Species.TerrestrialSystem)
         </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Assessor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Assessor)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Reviewer)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Reviewer)
+            </dd>
     </dl>
-</div>
-
-@*<p>Separate link to Narrative information</p>*@
-<div>
-    @Html.ActionLink( linkText: "Narrative and information",
-        actionName:"SingleNarrative",
-        controllerName: "Species",
-        routeValues: new { searchTerms = Model.Species.ScientificName },
-        htmlAttributes: null)
-</div>
-@*<p>PartialView to Narrative</p>*@
-@await Html.PartialAsync("_SingleNarrative", Model.Narrative)
-
-@*<p>Alla oleva linkki IUCN sivulle ei vielä toimi..</p>
-    <div>
-        @Html.ActionLink( linkText: "IUCN page",
-        actionName: "IUCNurl",
-        controllerName: "Species",
-        routeValues: new { searchTerms = Model.ScientificName },
-        htmlAttributes: null)
-    </div>*@
-
+</div>*@
