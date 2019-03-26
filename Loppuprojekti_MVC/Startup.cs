@@ -68,9 +68,6 @@ namespace Loppuprojekti_MVC
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                   name: "Bubble",
-                   template: "{controller=Bubble}/{action=Bubble}");
-                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
@@ -94,6 +91,9 @@ namespace Loppuprojekti_MVC
                 routes.MapRoute(
                    name: "Resources",
                    template: "{controller=Resources}/{action=ResourcesIndex}");
+                routes.MapRoute(
+                   name: "Bubble",
+                   template: "{controller=Bubble}/{action=Bubble}");
                 
             });
     }
