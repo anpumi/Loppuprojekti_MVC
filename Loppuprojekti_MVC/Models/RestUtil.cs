@@ -105,7 +105,7 @@ namespace Loppuprojekti_MVC.Models
         //GET link to IUCNpage of the animal
         public Link IUCNurl(string searchTerms)
         {
-        http://apiv3.iucnredlist.org/api/v3/weblink/loxodonta%20africana
+             //http://apiv3.iucnredlist.org/api/v3/weblink/loxodonta%20africana
             //TODO: virhekäsittely
             string json = "";
 

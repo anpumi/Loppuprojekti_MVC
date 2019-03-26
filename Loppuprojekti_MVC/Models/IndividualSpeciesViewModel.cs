@@ -9,5 +9,6 @@ namespace Loppuprojekti_MVC.Models
     {
         public IndividualSpecies Species { get; set; }
         public SpeciesNarrative Narrative { get; set; }
+        public Link Link { get; set; }
     }
 }

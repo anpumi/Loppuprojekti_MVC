@@ -15,6 +15,8 @@ namespace Loppuprojekti_MVC.Controllers
     public class SpeciesController : Controller
     {
         private RestUtil _rs = new RestUtil();
+        //PartialView
+        IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
 
         // GET species, /Species
         public ActionResult SpeciesIndex() 
@@ -30,9 +32,9 @@ namespace Loppuprojekti_MVC.Controllers
             var _as = _rs.SingleSpecies(searchTerms);
 
             //PartialView
-            IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
-            vm.Species = _as.FirstOrDefault();
+            vm.Species = _as.FirstOrDefault(); 
             vm.Narrative = _rs.SingleNarrative(searchTerms).FirstOrDefault();
+            vm.Link = _rs.IUCNurl(searchTerms);
 
             return View(vm);
             //return View(_as[0]); //ennen partialView:tä
@@ -43,7 +45,6 @@ namespace Loppuprojekti_MVC.Controllers
         public ActionResult SingleNarrative(string searchTerms)
         {
             var _as = _rs.SingleNarrative(searchTerms);
-
             return View(_as[0]);
         }
 
@@ -51,11 +52,11 @@ namespace Loppuprojekti_MVC.Controllers
         // GET IUCN page for individual species
         public ActionResult IUCNurl(string searchTerms)
         {
-            var _as = _rs.IUCNurl(searchTerms);
+            var _ls = _rs.IUCNurl(searchTerms);
 
             //ViewBag.Link = _as;
-            //return View(_as.Rlurl);
-            return ViewBag(_as.Rlurl);
+            return View(_ls.Rlurl);
+            //return ViewBag(_ls.Rlurl);
         }
 
     }
