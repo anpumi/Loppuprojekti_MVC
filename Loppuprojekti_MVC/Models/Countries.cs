@@ -27,6 +27,7 @@ namespace Loppuprojekti_MVC.Models
         public object Subpopulation { get; set; }
         [JsonProperty("category")]
         public string Category { get; set; }
+        public string CommonName { get; set; }
     }
 
     /// <summary> Red List available countries </summary>
