@@ -31,7 +31,13 @@ namespace Loppuprojekti_MVC.Controllers
             RestUtil _rs = new RestUtil();
             var _as = _rs.SingleSpecies(searchTerms);
 
-            return View(_as[0]);
+            //PartialView
+            IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
+            vm.Species = _as.FirstOrDefault();
+            vm.Narrative = _rs.SingleNarrative(searchTerms).FirstOrDefault();
+
+            return View(vm);
+            //return View(_as[0]); //ennen partialView:tä
             //return View(_as.FirstOrDefault());
         }
 
@@ -41,7 +47,6 @@ namespace Loppuprojekti_MVC.Controllers
             RestUtil _rs = new RestUtil();
             var _as = _rs.SingleNarrative(searchTerms);
 
-            //return View(_as.FirstOrDefault());
             return View(_as[0]);
         }
 

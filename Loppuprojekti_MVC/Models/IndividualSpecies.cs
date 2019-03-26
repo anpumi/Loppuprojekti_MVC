@@ -8,8 +8,10 @@ namespace Loppuprojekti_MVC.Models
 {
     //We chose to have nice C# names, thus JSOn serializer cannot recognize them (they are not precisely the same) and they are defined with [JsonProperty("")].
 
+    //Ti: changed into partial classes from classes, to get partial view to function
+    
     /// <summary> Red List Individual Species by name </summary>
-    public class IndividualSpecies
+    public partial class IndividualSpecies
     {
         [JsonProperty("taxon_id")]
         public int Taxonid { get; set; }
@@ -80,7 +82,7 @@ namespace Loppuprojekti_MVC.Models
     }
 
     /// <summary>The IndividualSpeciesRoot property represents the JSON Objects the GET returns.</summary>
-    public class IndividualSpeciesRoot
+    public partial class IndividualSpeciesRoot
     {
         [JsonProperty("name")]
         public string Name { get; set; }

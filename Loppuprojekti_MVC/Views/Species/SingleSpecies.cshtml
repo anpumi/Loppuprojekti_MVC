@@ -1,4 +1,4 @@
-﻿@model Loppuprojekti_MVC.Models.IndividualSpecies
+﻿@model Loppuprojekti_MVC.Models.IndividualSpeciesViewModel
 
 @using Loppuprojekti_MVC.Models;
 
@@ -9,7 +9,7 @@
 <h1>Species information</h1>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.MainCommonName)</h4>
+    <h4>@Html.DisplayFor(model => model.Species.MainCommonName)</h4>
     <hr />
     <dl class="row">
         @*<dt class="col-sm-2">
@@ -19,10 +19,10 @@
                 @Html.DisplayFor(model => model.Taxonid)
             </dd>*@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ScientificName)
+            @Html.DisplayNameFor(model => model.Species.ScientificName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ScientificName)
+            @Html.DisplayFor(model => model.Species.ScientificName)
         </dd>
         @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.KingdomName)
@@ -73,22 +73,22 @@
                 @Html.DisplayFor(model => model.Authority)
             </dd>*@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PublishedYear)
+            @Html.DisplayNameFor(model => model.Species.PublishedYear)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PublishedYear)
+            @Html.DisplayFor(model => model.Species.PublishedYear)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AssessmentDate)
+            @Html.DisplayNameFor(model => model.Species.AssessmentDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AssessmentDate)
+            @Html.DisplayFor(model => model.Species.AssessmentDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.Species.Category)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Category)
+            @Html.DisplayFor(model => model.Species.Category)
         </dd>
         @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Criteria)
@@ -97,28 +97,28 @@
                 @Html.DisplayFor(model => model.Criteria)
             </dd>*@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PopulationTrend)
+            @Html.DisplayNameFor(model => model.Species.PopulationTrend)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PopulationTrend)
+            @Html.DisplayFor(model => model.Species.PopulationTrend)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MarineSystem)
+            @Html.DisplayNameFor(model => model.Species.MarineSystem)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MarineSystem)
+            @Html.DisplayFor(model => model.Species.MarineSystem)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FreshwaterSystem)
+            @Html.DisplayNameFor(model => model.Species.FreshwaterSystem)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FreshwaterSystem)
+            @Html.DisplayFor(model => model.Species.FreshwaterSystem)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TerrestrialSystem)
+            @Html.DisplayNameFor(model => model.Species.TerrestrialSystem)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TerrestrialSystem)
+            @Html.DisplayFor(model => model.Species.TerrestrialSystem)
         </dd>
         @*<dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Assessor)
@@ -135,26 +135,23 @@
     </dl>
 </div>
 
+@*<p>Separate link to Narrative information</p>*@
 <div>
-@Html.ActionLink( linkText: "Narrative and information",
-    actionName:"SingleNarrative",
-    controllerName: "Species",
-    routeValues: new { searchTerms = Model.ScientificName },
-    htmlAttributes: null)
+    @Html.ActionLink( linkText: "Narrative and information",
+        actionName:"SingleNarrative",
+        controllerName: "Species",
+        routeValues: new { searchTerms = Model.Species.ScientificName },
+        htmlAttributes: null)
 </div>
+@*<p>PartialView to Narrative</p>*@
+@await Html.PartialAsync("_SingleNarrative", Model.Narrative)
 
 @*<p>Alla oleva linkki IUCN sivulle ei vielä toimi..</p>
-<div>
-    @Html.ActionLink( linkText: "IUCN page",
-    actionName: "IUCNurl",
-    controllerName: "Species",
-    routeValues: new { searchTerms = Model.ScientificName },
-    htmlAttributes: null)
-</div>*@
-
-@*<div>
-        <a asp-action="Index">Back to Home page</a>
-    </div>
     <div>
-        @Html.ActionLink("Back to Home", "Home", "Index")
+        @Html.ActionLink( linkText: "IUCN page",
+        actionName: "IUCNurl",
+        controllerName: "Species",
+        routeValues: new { searchTerms = Model.ScientificName },
+        htmlAttributes: null)
     </div>*@
+
