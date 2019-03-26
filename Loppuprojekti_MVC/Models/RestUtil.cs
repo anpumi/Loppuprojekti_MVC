@@ -55,6 +55,29 @@ namespace Loppuprojekti_MVC.Models
 
         }
 
+        public List<IndividualSpecies> SingleSpeciesId(int searchTerms)
+        {
+            //TODO: virhekäsittely
+            string json = "";
+
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //kovakoodattu testi versio
+                //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/loxodonta%20africana?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/id/{searchTerms}?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                json = responseString;
+            }
+
+            IndividualSpeciesRoot res;
+            res = JsonConvert.DeserializeObject<IndividualSpeciesRoot>(json);
+            return res.Result;
+
+        }
+
+        //http://apiv3.iucnredlist.org/api/v3/species/id/12392?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee
+
         //GET narrative info for a species
         // /species/name
         public List<SpeciesNarrative> SingleNarrative(string searchTerms)
