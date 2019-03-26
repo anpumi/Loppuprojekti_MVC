@@ -14,10 +14,11 @@ namespace Loppuprojekti_MVC.Controllers
      //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
+        private RestUtil _rs = new RestUtil();
+
         // GET species, /Species
         public ActionResult SpeciesIndex() 
         {
-            RestUtil _rs = new RestUtil();
             var _species = _rs.Species();
             
             return View(_species);
@@ -26,7 +27,6 @@ namespace Loppuprojekti_MVC.Controllers
         // GET individual info for individual species, /Species/SingleSpecies
         public ActionResult SingleSpecies(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _as = _rs.SingleSpecies(searchTerms);
 
             //PartialView
@@ -42,7 +42,6 @@ namespace Loppuprojekti_MVC.Controllers
         // GET individual info for individual species, /Species/SingleSpecies
         public ActionResult SingleNarrative(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _as = _rs.SingleNarrative(searchTerms);
 
             return View(_as[0]);
@@ -52,7 +51,6 @@ namespace Loppuprojekti_MVC.Controllers
         // GET IUCN page for individual species
         public ActionResult IUCNurl(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _as = _rs.IUCNurl(searchTerms);
 
             //ViewBag.Link = _as;
