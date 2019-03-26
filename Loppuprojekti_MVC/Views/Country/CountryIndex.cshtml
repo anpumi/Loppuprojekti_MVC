@@ -6,6 +6,15 @@
 }
 
 <h1>Countries</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-right">
+            @*<h4 style="margin-left:200px">Simple Pie Chart</h4>*@
+            <div id="chart1" class="text-right"></div>
+        </div>
+    </div>
+</div>
+
 <br />
 
 @if (!string.IsNullOrEmpty(letters))
@@ -24,6 +33,38 @@
 @foreach (var s in Model)
 {
     <ul>
-        @Html.ActionLink(s.Country,"Country", new { country = s.IsoCode })
+        @Html.ActionLink(s.Country, "Country", new { country = s.IsoCode })
     </ul>
+}
+
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Pie Chart with Data Array:
+            var arr = [
+                ['Region', 'Species Percentage'],
+                ['Africa', { v: 10333, f: '10 333 species' }],
+                ['Europe', { v: 13456, f: '1 3456 species' }],
+                ['Mediterranean', { v: 4709, f: '4 709 species' }],
+                ['Gulf of Mexico', { v: 940, f: '940 species' }],
+                ['Persian Gulf', { v: 471, f: '471 species' }],
+                ['Others', { v: 69422, f: '69 422 species' }]
+            ];
+            var data = google.visualization.arrayToDataTable(arr, false);
+            var option = {
+                title: 'Species from regions',
+                width: 400,
+                height: 300
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('chart1'));
+            chart.draw(data, option);
+
+        }
+    </script>
 }
