@@ -7,17 +7,12 @@
 }
 
 <h1>Species information</h1>
+@*<p>Tee table missä kaksi riviä</p>*@
 
 <div>
     <h4>@Html.DisplayFor(model => model.Species.MainCommonName)</h4>
     <hr />
     <dl class="row">
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Taxonid)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Taxonid)
-            </dd>*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Species.ScientificName)
         </dt>
@@ -59,18 +54,6 @@
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.GenusName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MainCommonName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MainCommonName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Authority)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Authority)
             </dd>*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Species.PublishedYear)
@@ -90,12 +73,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Species.Category)
         </dd>
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Criteria)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Criteria)
-            </dd>*@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Species.PopulationTrend)
         </dt>
@@ -120,18 +97,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Species.TerrestrialSystem)
         </dd>
-        @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Assessor)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Assessor)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Reviewer)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Reviewer)
-            </dd>*@
     </dl>
 </div>
 
