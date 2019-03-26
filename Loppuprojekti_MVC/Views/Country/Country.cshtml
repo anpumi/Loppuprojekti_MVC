@@ -28,7 +28,7 @@
 
     @*<partial name="_CommonNamePartial" model="s.ScientificName" />*@ 
     @*@await Html.PartialAsync("_CommonNamePartial", s)*@
-    @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+    @Html.ActionLink(s.CommonName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
 
     </ul>
     }

@@ -38,6 +38,12 @@ namespace Loppuprojekti_MVC.Controllers
             || c.Category == "CR" || c.Category == "VU");
             ViewBag.C = myRI.EnglishName; // Annukka is PROUD of this bit :)
             //ViewBag.EN = endangeredSpecies;
+            RestUtil ru = new RestUtil();
+            foreach (var item in allThreatenedSpecies)
+            {
+                string name = ru.SingleSpecies(item.ScientificName).FirstOrDefault()?.MainCommonName;
+                item.CommonName = name;
+            }
             return View(allThreatenedSpecies); // check what we actually want here!!
             //return View(countryspecies);
 
