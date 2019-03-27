@@ -6,7 +6,48 @@
     ViewData["Title"] = "SpeciesIndex";
 }
 
-<h1>All threatened Species: </h1> 
+<h1>All threatened Species: </h1>
+
+@Html.ActionLink("Extinct", "EXSpecies") |
+@Html.ActionLink("Extinct in the wild", "EWSpecies") |
+@Html.ActionLink("Critically Endangered", "CRSpecies") |
+@Html.ActionLink("Endangered", "ENSpecies") |
+@Html.ActionLink("Vulnerable", "VUSpecies") |
+
+
+@using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Get))
+{
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="NE" value="NE" autocomplete="off" checked> Not evaluated
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="DD" value="DD" autocomplete="off" checked> Data Deficient
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="LC" value="LC" autocomplete="off" checked> Least Concern
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="NT" value="NT" autocomplete="off" checked> Near Threatened
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="VU" value="VU" autocomplete="off" checked> Vulnerable
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EN" value="EN" autocomplete="off"> Endangered
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="CR" value="CR" autocomplete="off"> Critically Endangered
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EW" value="EW" autocomplete="off"> Extinct in The Wild
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EX" value="EX" autocomplete="off"> Extinct
+        </label>
+    </div>
+    <input type="submit" name="Search" id="searchTerms" value="Search" />
+}
 
 @foreach (var s in Model)
 {
@@ -17,8 +58,8 @@
             @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
             ,
         </i> classified as @s.Category
-        </ul>
-            }
+    </ul>
+}
 
 
 

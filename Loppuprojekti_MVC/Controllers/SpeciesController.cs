@@ -21,11 +21,19 @@ namespace Loppuprojekti_MVC.Controllers
         IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
 
         // GET species, /Species
-        public ActionResult SpeciesIndex() 
+        public ActionResult SpeciesIndex(string searchTerms) 
         {
             var _species = _rs.Species();
-            
-            return View(_species);
+
+            if (string.IsNullOrEmpty(searchTerms))
+            {
+                return View(_species);
+            }
+            else
+            {
+                return RedirectToAction("SCategory", "Species", new { @searchTerms = searchTerms });
+            }
+
         }
 
         // GET individual info for individual species, /Species/SingleSpecies
@@ -50,7 +58,6 @@ namespace Loppuprojekti_MVC.Controllers
             return View(_as[0]);
         }
 
-        //TODO: Get this working, would be funny :) 
         // GET IUCN page for individual species
         public ActionResult IUCNurl(string searchTerms)
         {
@@ -61,14 +68,12 @@ namespace Loppuprojekti_MVC.Controllers
             //return ViewBag(_ls.Rlurl);
         }
 
-        //TODO: Get this working for statistics
         // GET IUCN for count of species in different vulnerability classes
         //searchTerm: vulnerability class
         public ActionResult SCategory(string searchTerms)
         {
-            RestUtil _rs = new RestUtil();
             var _sc = _rs.SCategory(searchTerms);
-            return ViewBag(_sc.Count);
+            return View(_sc);
         }
 
     }
