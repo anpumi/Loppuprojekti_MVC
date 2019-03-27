@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Loppuprojekti_MVC.Models.Species>
+﻿@model Loppuprojekti_MVC.Models.SpeciesViewModel
 
 @using Loppuprojekti_MVC.Models;
 
@@ -6,20 +6,57 @@
     ViewData["Title"] = "SpeciesIndex";
 }
 
-<h1>All threatened Species: </h1> 
+<h1>All threatened Species: </h1>
 
-@foreach (var s in Model)
+
+@*<p>Yritys 2 viedä parametri..</p>
+    @Html.ActionLink("Vulnerable", "SCategory", "Species", new { searchTerms = @searchTerms})*@
+
+@*<p>Yritys x viedä parametri..</p>
+    <form action="">
+        <input type="radio" name="searchTerms" value="Vulnerable"> Vulnerable<br>
+        <input type="radio" name="searchTerms" value="female"> Female<br>
+        <input type="radio" name="searchTerms" value="other"> Other<br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>Yritys x viedä parametri..</p>*@
+
+@using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Post))
 {
-    @*<ul><i>@s.ScientificName</i>, classified as @s.Category</ul>*@
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="NE" value="NE" autocomplete="off" checked> Not evaluated
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="DD" value="DD" autocomplete="off" checked> Data Deficient
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="LC" value="LC" autocomplete="off" checked> Least Concern
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="NT" value="NT" autocomplete="off" checked> Near Threatened
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="VU" value="VU" autocomplete="off" checked> Vulnerable
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EN" value="EN" autocomplete="off"> Endangered
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="CR" value="CR" autocomplete="off"> Critically Endangered
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EW" value="EW" autocomplete="off"> Extinct in The Wild
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="searchTerms" id="EX" value="EX" autocomplete="off"> Extinct
+        </label>
+    </div>
+}
 
-    <ul>
-        <i>
-            @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
-            ,
-        </i> classified as @s.Category
-        </ul>
-            }
-
+<p>Lisää tähän se aiempi partialView</p>
+@await Html.PartialAsync("_SCategory", Model.SpeciesCategory)
 
 
 <div>

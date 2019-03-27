@@ -98,7 +98,6 @@ namespace Loppuprojekti_MVC.Models
             return res.Result;
         }
 
-        //TODO: Make this work, would be funny :)
         //GET link to IUCNpage of the animal
         public Link IUCNurl(string searchTerms)
         {
