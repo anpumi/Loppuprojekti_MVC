@@ -65,6 +65,24 @@
             var chart = new google.visualization.PieChart(document.getElementById('chart1'));
             chart.draw(data, option);
 
+            //3D Pie Chart:
+            option.is3D = true;
+            chart = new google.visualization.PieChart(document.getElementById('chart2'));
+            chart.draw(data, option);
+
+            // Exploded Pie Chart:
+            option.is3D = false;
+            option.slices = {
+                1: { offset: 0.3 },
+                3: { offset: 0.5 }
+            };
+            chart = new google.visualization.PieChart(document.getElementById('chart3'));
+            chart.draw(data, option);
+
+            // Exploded 3D Pie Chart:
+            option.is3D = true;
+            chart = new google.visualization.PieChart(document.getElementById('chart4'));
+            chart.draw(data, option);
         }
     </script>
 }

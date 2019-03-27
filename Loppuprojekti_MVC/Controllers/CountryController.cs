@@ -34,23 +34,24 @@ namespace Loppuprojekti_MVC.Controllers
             //var extinctWildSpecies = cu.Country(country).Where(c => c.Category == "EW");
             //var criticallyEndangeredSpecies = cu.Country(country).Where(c => c.Category == "CR");
             //var vulnerableSpecies = cu.Country(country).Where(c => c.Category == "VU");
-            var allThreatenedSpecies = cu.Country(country).Where(c => c.Category == "EN" || c.Category=="EX" || c.Category == "EW"
+            var allThreatenedSpecies = cu.Country(country).Where(c => c.Category == "EN" || c.Category == "EX" || c.Category == "EW"
             || c.Category == "CR" || c.Category == "VU");
             ViewBag.C = myRI.EnglishName; // Annukka is PROUD of this bit :)
-            //ViewBag.EN = endangeredSpecies;
             RestUtil ru = new RestUtil();
+
             //foreach (var item in allThreatenedSpecies)
             //{
             //    //string name = ru.SingleSpecies(item.ScientificName).FirstOrDefault()?.MainCommonName;
             //    string name = ru.SingleSpecies(item.ScientificName).FirstOrDefault()?.MainCommonName;
             //    item.CommonName = name;
             //}
+
             return View(allThreatenedSpecies); // check what we actually want here!!
             //return View(countryspecies);
 
         }
 
-        public ActionResult ENSpecies (string country)
+        public ActionResult ENSpecies(string country)
         {
             RegionInfo myRI = new RegionInfo(country);
             CountryUtil cu = new CountryUtil();
