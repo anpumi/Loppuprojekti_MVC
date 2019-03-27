@@ -9,28 +9,32 @@
 <h1>List of all threatened species in @ViewBag.C</h1>
 
 
-    @Html.ActionLink("Extinct", "EXSpecies") |
-    @Html.ActionLink("Extinct in the wild", "EWSpecies") |
-    @Html.ActionLink("Critically Endangered", "CRSpecies") |
-    @Html.ActionLink("Endangered", "ENSpecies") |
-    @Html.ActionLink("Vulnerable", "VUSpecies") |
+@Html.ActionLink("Extinct", "EXSpecies") |
+@Html.ActionLink("Extinct in the wild", "EWSpecies") |
+@Html.ActionLink("Critically Endangered", "CRSpecies") |
+@Html.ActionLink("Endangered", "ENSpecies") |
+@Html.ActionLink("Vulnerable", "VUSpecies") |
 <br />
-    @*@foreach (var item in en)
+@*@foreach (var item in en)
     {
     @Html.ActionLink("Endangered", "ENSpecies", new { country = item.ToString() })
     }*@
 &nbsp;
 <br />
-@foreach (var s in Model)
-{
+
 <ul>
-    @*@Html.DisplayFor(model => model.MainCommonName) - dafuq do we refer to another model??*@
+    @foreach (var s in Model)
+    {
 
-    @*<partial name="_CommonNamePartial" model="s.ScientificName" />*@ 
-    @*@await Html.PartialAsync("_CommonNamePartial", s)*@
-    @Html.ActionLink(s.CommonName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+        @*@Html.DisplayFor(model => model.MainCommonName) - dafuq do we refer to another model??*@
 
-    </ul>
+        @*<partial name="_CommonNamePartial" model="s.ScientificName" />*@
+        @*@await Html.PartialAsync("_CommonNamePartial", s)*@
+        <li>
+            @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+        </li>
+
+
     }
-
+</ul>
 
