@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace Loppuprojekti_MVC.Models
         public string FamilyName { get; set; }
         [JsonProperty("genus_name")]
         public string GenusName { get; set; }
+        [Display(Name = "Scientific Name")]
         [JsonProperty("scientific_name")]
         public string ScientificName { get; set; }
         [JsonProperty("infra_rank")]

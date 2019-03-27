@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace Loppuprojekti_MVC.Models
     {
         [JsonProperty("taxon_id")]
         public int Taxonid { get; set; }
+        [Display(Name = "Scientific Name")]
         [JsonProperty("scientific_name")]
         public string ScientificName { get; set; }
         [JsonProperty("kingdom")]
@@ -25,6 +27,7 @@ namespace Loppuprojekti_MVC.Models
         [JsonProperty("genus")]
         public string GenusName { get; set; }
         /// <summary> Primary name by which the species has been tagged in the Red List </summary>
+        [Display(Name = "Common Name")]
         [JsonProperty("main_common_name")]
         public string MainCommonName { get; set; }
         [JsonProperty("authority")]
@@ -38,15 +41,19 @@ namespace Loppuprojekti_MVC.Models
         public string Category { get; set; }
         [JsonProperty("criteria")]
         public string Criteria { get; set; }
+        [Display(Name = "Population trend")]
         [JsonProperty("population_trend")]
         public string PopulationTrend { get; set; }
         /// <summary> True is the species is marine </summary>
+        [Display(Name = "Marine system")]
         [JsonProperty("marine_system")]
         public bool MarineSystem { get; set; }
         /// <summary> True is the species is fresh water </summary>
+        [Display(Name = "Freshwater system")]
         [JsonProperty("freshwater_system")]
         public bool FreshwaterSystem { get; set; }
         /// <summary> True is the species is terrestrial </summary>
+        [Display(Name = "Terrestrial system")]
         [JsonProperty("terrestrial_system")]
         public bool TerrestrialSystem { get; set; }
         [JsonProperty("assessor")]
@@ -85,6 +92,7 @@ namespace Loppuprojekti_MVC.Models
     {
         [JsonProperty("taxon_id")]
         public int Taxonid { get; set; }
+        [Display(Name = "Scientific Name")]
         [JsonProperty("scientific_name")]
         public string ScientificName { get; set; }
         [JsonProperty("kingdom")]
