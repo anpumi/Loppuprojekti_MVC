@@ -36,7 +36,7 @@ namespace Loppuprojekti_MVC.Models
 
             }
         }
-        // edit needed below to get data from local storage 
+        // REST API caal kept incase needed to use with azure  
         //public List<CountrySpecies> Country(string isoCode) // parameter needed for the var response url below
         //{
         //    string json = "";
