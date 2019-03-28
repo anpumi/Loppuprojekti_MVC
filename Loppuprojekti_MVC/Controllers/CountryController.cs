@@ -9,15 +9,22 @@ using System.Threading;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Loppuprojekti_MVC.Controllers
 {
     public class CountryController : Controller
     {
-
+        //Azure Storage Blob ceremonies
+        private readonly IConfiguration _configuration;
+        private readonly CloudStorageAccount _storageAccount;
+        private readonly CloudBlobClient _blobClient;
+        private readonly CloudBlobContainer _container;
+        private const string _containerName = "countryapi"; 
 
         private CountryUtil ct = new CountryUtil();
+
         // GET: Countries
         public ActionResult CountryIndex(string firstLetter = "a")
         {
@@ -103,6 +110,24 @@ namespace Loppuprojekti_MVC.Controllers
             var vulnerableSpecies = cu.Country(country).Where(c => c.Category == "VU");
             ViewBag.C = myRI.EnglishName;
             return View(vulnerableSpecies);
+        }
+
+        //Azure Storage Blob ctor
+        public CountryController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+
+            var accountName =
+            _configuration["ConnectionStrings:StrorageConnection:AccountName"];
+            var accountKey =
+            _configuration["ConnectionStrings:StrorageConnection:AccountKey"];
+            _storageAccount = new CloudStorageAccount(
+            new StorageCredentials(accountName, accountKey),
+            true);
+
+            _blobClient = _storageAccount.CreateCloudBlobClient();
+            _container = _blobClient.GetContainerReference(_containerName);
+            _container.CreateIfNotExistsAsync().Wait();
         }
 
         //GET countries working version
