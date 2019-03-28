@@ -7,11 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace Loppuprojekti_MVC.Controllers
 {
     public class CountryController : Controller
     {
+
+
         private CountryUtil ct = new CountryUtil();
         // GET: Countries
         public ActionResult CountryIndex(string firstLetter = "a")

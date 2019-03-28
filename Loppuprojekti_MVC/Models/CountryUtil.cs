@@ -61,7 +61,8 @@ namespace Loppuprojekti_MVC.Models
         {
             string json = "";
 
-            using (StreamReader sr = new StreamReader(@"C:\Users\Annukka\academy\Loppuprojekti\CountryAPi\" + isoCode + ".txt"))
+            //using (StreamReader sr = new StreamReader(@"C:\Users\Annukka\academy\Loppuprojekti\CountryAPi\" + isoCode + ".txt"))
+            using (StreamReader sr = new StreamReader(@"C:\Users\HeidiA\Academy\Viikko 11 - 12 Loppuprojekti\CountryApi\" + isoCode + ".txt"))
             {
                 CountryList cl = new CountryList();
                 json = sr.ReadToEnd();
