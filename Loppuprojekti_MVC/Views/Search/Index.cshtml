@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 
-<div class="text-center">
-    <h1 class="display-4">Endangered Planet</h1>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Search</h1>
+    </div>
 </div>
+
+
 
 @*TODO: Search with common name*@
 @using (Html.BeginForm("searchTerms", "Species", "SingleSpecies", FormMethod.Get))

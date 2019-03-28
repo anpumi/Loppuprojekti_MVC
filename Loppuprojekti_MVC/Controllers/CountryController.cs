@@ -28,6 +28,7 @@ namespace Loppuprojekti_MVC.Controllers
         {
             RegionInfo myRI = new RegionInfo(country);
             CountryUtil cu = new CountryUtil();
+            IndividualSpecies ind = new IndividualSpecies();
             var countryspecies = cu.Country(country);
             //var endangeredSpecies = cu.Country(country).Where(c => c.Category == "EN");
             //var extinctSpecies = cu.Country(country).Where(c => c.Category == "EX");
@@ -37,6 +38,8 @@ namespace Loppuprojekti_MVC.Controllers
             var allThreatenedSpecies = cu.Country(country).Where(c => c.Category == "EN" || c.Category == "EX" || c.Category == "EW"
             || c.Category == "CR" || c.Category == "VU");
             ViewBag.C = myRI.EnglishName; // Annukka is PROUD of this bit :)
+            ViewBag.RI = myRI;
+            ViewBag.Categories = string.Join("", ind.Category);
             RestUtil ru = new RestUtil();
 
             //foreach (var item in allThreatenedSpecies)

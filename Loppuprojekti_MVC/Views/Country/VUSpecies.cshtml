@@ -1,15 +1,14 @@
 ﻿@model IEnumerable<Loppuprojekti_MVC.Models.CountrySpecies>
 @{
-    ViewData["Title"] = "ENSpecies";
+    ViewData["Title"] = "VUSpecies";
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">List of endangered species in @ViewBag.C</h1>
+            <h1 class="display-4">List of vulnerable species in @ViewBag.C</h1>
             <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
         </div>
     </div>
 }
-
 
 @foreach (var s in Model)
 {
@@ -17,4 +16,3 @@
         @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
     </ul>
 }
-

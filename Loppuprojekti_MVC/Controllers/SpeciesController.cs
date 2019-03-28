@@ -72,6 +72,8 @@ namespace Loppuprojekti_MVC.Controllers
         //searchTerm: vulnerability class
         public ActionResult SCategory(string searchTerms)
         {
+            IndividualSpecies ind = new IndividualSpecies();
+            ViewBag.SC = ind.Category;
             var _sc = _rs.SCategory(searchTerms);
             return View(_sc);
         }

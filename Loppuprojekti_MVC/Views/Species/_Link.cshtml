@@ -7,5 +7,6 @@
 }
 
 <div>
-    <p><b>IUCN website for species:</b>: @Html.DisplayFor(model => model.Rlurl)</p>
+    @*<p><b>IUCN website for species:</b> @Html.DisplayFor(model => model.Rlurl)</p>*@
+    <p><b>IUCN website for species:</b> <a href="@Model.Rlurl" target="_blank">@Model.Rlurl</a>
 </div>

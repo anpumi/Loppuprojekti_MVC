@@ -6,10 +6,16 @@
     ViewData["Title"] = "SingleSpecies";
 }
 
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">@Html.DisplayFor(model => model.Species.ScientificName)</h1>
+        <h2 class="lead">@Html.DisplayFor(model => model.Species.MainCommonName)</h2>
+    </div>
+</div>
 
 <div>
-    <h1>@Html.DisplayFor(model => model.Species.ScientificName)</h1>
-    <h3>@Html.DisplayFor(model => model.Species.MainCommonName)</h3>
+    @*<h1>@Html.DisplayFor(model => model.Species.ScientificName)</h1>
+    <h3>@Html.DisplayFor(model => model.Species.MainCommonName)</h3>*@
     <table class="table">
         <thead>
             <tr>
@@ -23,8 +29,12 @@
                 <td>
                     @Html.DisplayNameFor(model => model.Species.Category) : @Html.DisplayFor(model => model.Species.Category)
                 </td>
-                <td>@Html.DisplayFor(model => model.Species.PopulationTrend)</td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Species.PopulationTrend)
+                </td>
                 <td> @Html.DisplayNameFor(model => model.Species.MarineSystem) @Html.DisplayFor(model => model.Species.MarineSystem)</td>
+
             </tr>
             <tr>
                 <td></td>
@@ -40,138 +50,8 @@
     </table>
 </div>
 
-@await  Html.PartialAsync("_Link", Model.Link)
-@*<p>Separate link to Narrative information</p>*@
-<div>
-    @Html.ActionLink( linkText: "Narrative and information",
-        actionName:"SingleNarrative",
-        controllerName: "Species",
-        routeValues: new { searchTerms = Model.Species.ScientificName },
-        htmlAttributes: null)
-</div>
+@await Html.PartialAsync("_Link", Model.Link)
+
 @*<p>PartialView to Narrative</p>*@
 @await Html.PartialAsync("_SingleNarrative", Model.Narrative)
 
-
-
-@*<div>
-    <h1>Species information</h1>
-    <h4>@Html.DisplayFor(model => model.Species.MainCommonName)</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.ScientificName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.ScientificName)
-        </dd>
-        <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.KingdomName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.KingdomName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PhylumName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PhylumName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ClassName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.ClassName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OrderName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OrderName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FamilyName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FamilyName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.GenusName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GenusName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.MainCommonName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.MainCommonName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Authority)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Authority)
-            </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.PublishedYear)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.PublishedYear)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.AssessmentDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.AssessmentDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.Category)
-        </dd>
-        <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Criteria)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Criteria)
-            </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.PopulationTrend)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.PopulationTrend)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.MarineSystem)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.MarineSystem)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.FreshwaterSystem)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.FreshwaterSystem)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Species.TerrestrialSystem)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Species.TerrestrialSystem)
-        </dd>
-        <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Assessor)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Assessor)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Reviewer)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Reviewer)
-            </dd>
-    </dl>
-</div>*@
