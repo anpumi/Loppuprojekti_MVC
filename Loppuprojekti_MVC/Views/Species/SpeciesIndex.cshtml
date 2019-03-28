@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "SpeciesIndex";
+    string letters = ViewBag.Letters;
 }
 <head>
     @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">*@
@@ -18,8 +19,21 @@
         <p class="lead"> </p>
         <h1 class="display-4">All threatened species</h1>
         <p class="lead">@Html.ActionLink("Extinct", "SCategory", "Species", new { searchTerms = "EX" })  |  @Html.ActionLink("Extinct in the wild", "SCategory", "Species", new { searchTerms = "EW" })  |  @Html.ActionLink("Critically Endangered", "SCategory", "Species", new { searchTerms = "CR" })  |  @Html.ActionLink("Endangered", "SCategory", "Species", new { searchTerms = "EN" })  |  @Html.ActionLink("Vulnerable", "SCategory", "Species", new { searchTerms = "VU" })</p>
+        <p class="lead">
+            @if (!string.IsNullOrEmpty(letters))
+            {
+                foreach (var c in letters)
+                {
+                    @Html.ActionLink(c.ToString().ToUpper(), "SpeciesIndex", new { searchTerms = c.ToString() })
+
+                    @: &nbsp;
+                }
+            }
+            </p>
     </div>
 </div>
+
+
 
 @*@Html.ActionLink("Extinct", "SCategory", "Species", new { searchTerms = "EX" }) |
     @Html.ActionLink("Extinct in the wild", "SCategory", "Species", new { searchTerms = "EW" }) |

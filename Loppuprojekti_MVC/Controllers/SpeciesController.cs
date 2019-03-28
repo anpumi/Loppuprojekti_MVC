@@ -13,7 +13,7 @@ namespace Loppuprojekti_MVC.Controllers
 {
     //TODO: Initialize RestUtil in field, then just call it in all the methods
 
-     //only search logic, GET logic in Models.RestUtil 
+    //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
         private RestUtil _rs = new RestUtil();
@@ -21,18 +21,17 @@ namespace Loppuprojekti_MVC.Controllers
         IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
 
         // GET species, /Species
-        public ActionResult SpeciesIndex(string searchTerms) 
+        public ActionResult SpeciesIndex(string searchTerms = "a")
         {
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
             var _species = _rs.Species();
 
-            if (string.IsNullOrEmpty(searchTerms))
-            {
-                return View(_species);
-            }
-            else
-            {
-                return RedirectToAction("SCategory", "Species", new { @searchTerms = searchTerms });
-            }
+            return View(sp);
 
         }
 
@@ -83,6 +82,14 @@ namespace Loppuprojekti_MVC.Controllers
         //searchTerm: vulnerability class
         public ActionResult SCategory(string searchTerms)
         {
+            //searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            var _species = _rs.Species();
+
             IndividualSpecies ind = new IndividualSpecies();
             if (searchTerms == "EX")
             {
@@ -109,7 +116,7 @@ namespace Loppuprojekti_MVC.Controllers
                 ViewBag.ST = "Vulnerable";
                 ViewBag.DS = "A taxon is vulnerable when the best available evidence indicates that it meets any of the criteria A to E for vulnerable, and it is therefore considered to be facing a high risk of extinction in the wild.";
             }
-            //ViewBag.ST = searchTerms;
+
             var _sc = _rs.SCategory(searchTerms);
             return View(_sc);
         }
