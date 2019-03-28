@@ -7,15 +7,18 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Countries</h1>
-        <p class="lead">@if (!string.IsNullOrEmpty(letters))
-        {
-            foreach (var c in letters)
+        <p class="lead">
+            @if (!string.IsNullOrEmpty(letters))
             {
-                @Html.ActionLink(c.ToString().ToUpper(), "CountryIndex", new { firstLetter = c.ToString() })
+                foreach (var c in letters)
+                {
+                    @Html.ActionLink(c.ToString().ToUpper(), "CountryIndex", new { firstLetter = c.ToString() })
 
-                @: &nbsp;
+                    @: &nbsp;
+                }
             }
-        }</p>
+        </p>
+        <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
     </div>
 </div>
 

@@ -64,6 +64,8 @@ h1, h2{
 .footer {
     position: absolute;
     bottom: 0;
+    top:auto;
+    border-top-style:hidden;
     width: 100%;
     white-space: nowrap;
     /* Set the fixed height of the footer here */
