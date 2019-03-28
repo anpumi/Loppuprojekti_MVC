@@ -40,13 +40,17 @@ namespace Loppuprojekti_MVC.Controllers
         public ActionResult SingleSpecies(string searchTerms)
         {
             var _as = _rs.SingleSpecies(searchTerms);
-
-            //PartialView
-            vm.Species = _as.FirstOrDefault(); 
+            if (_as.Count == 0)
+            {
+                TempData["Errormessage"] = "No results for your search, please check the spelling. If you have trouble, check http://www.sciname.info/";
+                return RedirectToAction("Index", "Home");
+            }
+            //PartialView, vm contains needed Models
+            vm.Species = _as.FirstOrDefault();
             vm.Narrative = _rs.SingleNarrative(searchTerms).FirstOrDefault();
             vm.Link = _rs.IUCNurl(searchTerms);
-
             return View(vm);
+
             //return View(_as[0]); //ennen partialView:tä
             //return View(_as.FirstOrDefault());
         }
@@ -83,22 +87,27 @@ namespace Loppuprojekti_MVC.Controllers
             if (searchTerms == "EX")
             {
                 ViewBag.ST = "Extinct";
+                ViewBag.DS = "A taxon is extinct when there is no reasonable doubt that the last individual has died. A taxon is presumed extinct when exhaustive surveys in known and/or expected habitat, at appropriate times (diurnal, seasonal, annual), throughout its historic range have failed to record an individual. Surveys should be over a time frame appropriate to the taxon’s life cycle and life form.";
             }
             else if (searchTerms == "EW")
             {
                 ViewBag.ST = "Extinct in the wild";
+                ViewBag.DS = "A taxon is extinct in the wild when it is known only to survive in cultivation, in captivity or as a naturalized population (or populations) well outside the past range. A taxon is presumed extinct in the wild when exhaustive surveys in known and/or expected habitat, at appropriate times (diurnal, seasonal, annual), throughout its historic range have failed to record an individual. Surveys should be over a time frame appropriate to the taxon’s life cycle and life form.";
             }
             else if (searchTerms == "CR")
             {
                 ViewBag.ST = "Critically endangered";
+                ViewBag.DS = "A taxon is critically endangered when the best available evidence indicates that it meets any of the criteria A to E for critically endangered, and it is therefore considered to be facing an extremely high risk of extinction in the wild.";
             }
             else if (searchTerms == "EN")
             {
                 ViewBag.ST = "Endangered";
+                ViewBag.DS = "A taxon is endangered when the best available evidence indicates that it meets any of the criteria A to E for endangered, and it is therefore considered to be facing a very high risk of extinction in the wild.";
             }
             else if (searchTerms == "VU")
             {
                 ViewBag.ST = "Vulnerable";
+                ViewBag.DS = "A taxon is vulnerable when the best available evidence indicates that it meets any of the criteria A to E for vulnerable, and it is therefore considered to be facing a high risk of extinction in the wild.";
             }
             //ViewBag.ST = searchTerms;
             var _sc = _rs.SCategory(searchTerms);

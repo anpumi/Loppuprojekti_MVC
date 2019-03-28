@@ -24,11 +24,17 @@ namespace Loppuprojekti_MVC.Controllers
             {
                 return View();
             }
+            if (!searchTerms.Trim().Contains(" "))
+            {
+                TempData["ErrorMessage"] = "Cannot search with provided name. Please provide a valid scientific name.";
+                return View();
+            }
             else
             {
-                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms }); 
+                return RedirectToAction("SingleSpecies", "Species", new { @searchTerms = searchTerms });
             }
         }
+
 
         public IActionResult Privacy()
         {

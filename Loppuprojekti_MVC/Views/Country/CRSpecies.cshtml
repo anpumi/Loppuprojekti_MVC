@@ -4,7 +4,12 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
+            <p></p>
+            <p></p>
             <h1 class="display-4">List of critically endangered species in @ViewBag.C</h1>
+            <p class="lead">
+                A taxon is critically endangered when the best available evidence indicates that it meets any of the criteria A to E for critically endangered, and it is therefore considered to be facing an extremely high risk of extinction in the wild.
+            </p>
             <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
         </div>
     </div>
@@ -17,3 +22,5 @@
         @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
     </ul>
 }
+<br>
+<br>

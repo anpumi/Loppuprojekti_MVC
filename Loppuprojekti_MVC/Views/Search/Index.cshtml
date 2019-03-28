@@ -16,6 +16,7 @@
 
 
 @*TODO: Search with common name*@
+<div>@TempData["Errormessage"]</div>
 @using (Html.BeginForm("searchTerms", "Species", "SingleSpecies", FormMethod.Get))
 {
     <input type="text" name="searchTerms" placeholder="Scientific name" />

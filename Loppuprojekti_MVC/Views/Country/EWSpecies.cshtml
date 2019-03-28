@@ -4,7 +4,13 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
+            <p></p>
+            <p></p>
             <h1 class="display-4">List of extinct in the wild species in @ViewBag.C</h1>
+            <p class="lead">
+                A taxon is extinct in the wild when it is known only to survive in cultivation, in captivity or as a naturalized population (or populations) well outside the past range. A taxon is presumed extinct in the wild when exhaustive surveys in known and/or expected habitat, at appropriate times (diurnal, seasonal, annual), throughout its historic range have failed to record an individual. Surveys should be over a time frame appropriate to the taxon’s life cycle and life form.
+            </p>
+
             <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
         </div>
     </div>
@@ -17,3 +23,5 @@
         @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
     </ul>
 }
+<br>
+<br>

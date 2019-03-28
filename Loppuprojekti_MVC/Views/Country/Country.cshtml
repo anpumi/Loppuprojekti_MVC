@@ -8,6 +8,8 @@
 }
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
+        <p></p>
+        <p></p>
         <h1 class="display-4">List of all threatened species in @ViewBag.C</h1>
         <p class="lead">Includes categories @Html.ActionLink("Extinct", "EXSpecies", "Country", new { country = ViewBag.RI }), @Html.ActionLink("Extinct in the wild", "EWSpecies", "Country", new { country = ViewBag.RI }), @Html.ActionLink("Critically Endangered", "CRSpecies", "Country", new { country = ViewBag.RI }), @Html.ActionLink("Endangered", "ENSpecies", "Country", new { country = ViewBag.RI }), and @Html.ActionLink("Vulnerable", "VUSpecies", "Country", new { country = ViewBag.RI })</p>
         <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>

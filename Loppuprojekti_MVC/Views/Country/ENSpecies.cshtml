@@ -4,7 +4,12 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
+            <p></p>
+            <p></p>
             <h1 class="display-4">List of endangered species in @ViewBag.C</h1>
+            <p class="lead">
+                A taxon is endangered when the best available evidence indicates that it meets any of the criteria A to E for endangered, and it is therefore considered to be facing a very high risk of extinction in the wild.
+            </p>
             <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
         </div>
     </div>
@@ -14,7 +19,9 @@
 @foreach (var s in Model)
 {
     <ul>
-        @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+        @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName }), @ViewBag.NM
     </ul>
 }
+<br>
+<br>
 

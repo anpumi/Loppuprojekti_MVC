@@ -8,7 +8,10 @@
 }
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
+        <p class="lead"> </p>
+        <p class="lead"> </p>
         <h1 class="display-4">@ViewBag.ST species</h1>
+        <p class="lead">@ViewBag.DS</p>
         <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
     </div>
 </div>
@@ -20,7 +23,9 @@
 {
     @*<ul><i>@s.ScientificName</i>, classified as @s.Category</ul>*@
 
-    <ul class="co" >
+    <ul class="co">
         @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
     </ul>
 }
+    <br />
+    <br />
