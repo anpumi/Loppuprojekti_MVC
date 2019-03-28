@@ -80,11 +80,11 @@ namespace Loppuprojekti_MVC.Controllers
 
         // GET IUCN for count of species in different vulnerability classes
         //searchTerm: vulnerability class
-        public ActionResult SCategory(string searchTerms)
+        public ActionResult SCategory(string searchTerms = "A")
         {
-            //searchTerms = searchTerms.ToLower();
+            //searchTerms = searchTerms.ToLower(); // ei saa olla: kosahtaa!
             RestUtil rs = new RestUtil();
-            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).OrderBy(c => c.ScientificName).ToList();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.StartsWith(searchTerms)).OrderBy(c => c.ScientificName).ToList();
 
             ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
 
