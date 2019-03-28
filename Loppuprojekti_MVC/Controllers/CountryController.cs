@@ -60,7 +60,6 @@ namespace Loppuprojekti_MVC.Controllers
             CountryUtil cu = new CountryUtil();
             var endangeredSpecies = cu.Country(country).Where(c => c.Category == "EN");
             ViewBag.C = myRI.EnglishName;
-            ViewBag.EN = endangeredSpecies;
             return View(endangeredSpecies);
         }
 

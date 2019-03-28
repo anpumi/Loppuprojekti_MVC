@@ -15,82 +15,85 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">All threatened species</h1>
-        <p class="lead">EX: Extinct  |  EW: Extinct in the Wild  |  EN: Endangered  |  CR: Critically Endangered  |  VU: Vulnerable</p>
+        <p class="lead">@Html.ActionLink("Extinct", "SCategory", "Species", new { searchTerms = "EX" })  |  @Html.ActionLink("Extinct in the wild", "SCategory", "Species", new { searchTerms = "EW" })  |  @Html.ActionLink("Critically Endangered", "SCategory", "Species", new { searchTerms = "CR" })  |  @Html.ActionLink("Endangered", "SCategory", "Species", new { searchTerms = "EN" })  |  @Html.ActionLink("Vulnerable", "SCategory", "Species", new { searchTerms = "VU" })</p>
     </div>
 </div>
 
+@*@Html.ActionLink("Extinct", "SCategory", "Species", new { searchTerms = "EX" }) |
+    @Html.ActionLink("Extinct in the wild", "SCategory", "Species", new { searchTerms = "EW" }) |
+    @Html.ActionLink("Critically Endangered", "SCategory", "Species", new { searchTerms = "CR" }) |
+    @Html.ActionLink("Endangered", "SCategory", "Species", new { searchTerms = "EN" }) |
+    @Html.ActionLink("Vulnerable", "SCategory", "Species", new { searchTerms = "VU" })*@
 @*<h1>All threatened Species: </h1>*@
 
 @*<p>A JavaScript script is needed for the dropdown to work. Change in state etc. Also check that the parameter is passed down okay..</p>
-@using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Get))
-{
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-        </button>
-        <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="NT">Near Threatened</a>
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="VU" href="#">Vulnerable</a>
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EN" href="#">Endangered</a>
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="CR" href="#">Critically Endangered</a>
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EW" href="#">Extinct in The Wild</a>
-            <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EX" href="#">Extinct</a>
+    @using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Get))
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="NT">Near Threatened</a>
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="VU" href="#">Vulnerable</a>
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EN" href="#">Endangered</a>
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="CR" href="#">Critically Endangered</a>
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EW" href="#">Extinct in The Wild</a>
+                <a class="dropdown-item" role="menuitem" name="searchTerms" id="searchTerms" value="EX" href="#">Extinct</a>
+            </div>
+            <input type="submit" name="Search" id="searchTerms" value="Search" />
         </div>
-        <input type="submit" name="Search" id="searchTerms" value="Search" />
-    </div>
-}*@
+    }*@
 
-<br />
+@*<br />*@
 
-@using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Get))
-{
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary">
-        <input type="radio" name="searchTerms" id="EX" value="EX" autocomplete="off"> Extinct
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" name="searchTerms" id="EW" value="EW" autocomplete="off"> Extinct in The Wild
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" name="searchTerms" id="EN" value="EN" autocomplete="off"> Endangered
-    </label>
-    <label class="btn btn-secondary">
-        <input type="radio" name="searchTerms" id="CR" value="CR" autocomplete="off"> Critically Endangered
-    </label>
-    <label class="btn btn-secondary">
-        <input type="submit" name="searchTerms" id="VU" value="VU" autocomplete="off" checked> Vulnerable
-    </label>
-    
-</div>
-    <br />
+@*@using (Html.BeginForm("searchTerms", "Species", "SCategory", FormMethod.Get))
+    {
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+                <input type="radio" name="searchTerms" id="EX" value="EX" autocomplete="off"> Extinct
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="searchTerms" id="EW" value="EW" autocomplete="off"> Extinct in The Wild
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="searchTerms" id="EN" value="EN" autocomplete="off"> Endangered
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="searchTerms" id="CR" value="CR" autocomplete="off"> Critically Endangered
+            </label>
+            <label class="btn btn-secondary">
+                <input type="submit" name="searchTerms" id="VU" value="VU" autocomplete="off" checked> Vulnerable
+            </label>
 
-    <input type="submit" name="Search" id="searchTerms" value="Search" />
-    @*<label class="btn btn-secondary">
-            <input type="radio" name="searchTerms" id="NE" value="NE" autocomplete="off" checked> Not evaluated
-        </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="searchTerms" id="DD" value="DD" autocomplete="off" checked> Data Deficient
-        </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="searchTerms" id="LC" value="LC" autocomplete="off" checked> Least Concern
-        </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="searchTerms" id="NT" value="NT" autocomplete="off" checked> Near Threatened
-        </label>*@
-}
+        </div>
+        <br />
 
+        <input type="submit" name="Search" id="searchTerms" value="Search" />*@
+@*<label class="btn btn-secondary">
+        <input type="radio" name="searchTerms" id="NE" value="NE" autocomplete="off" checked> Not evaluated
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="searchTerms" id="DD" value="DD" autocomplete="off" checked> Data Deficient
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="searchTerms" id="LC" value="LC" autocomplete="off" checked> Least Concern
+    </label>
+    <label class="btn btn-secondary">
+        <input type="radio" name="searchTerms" id="NT" value="NT" autocomplete="off" checked> Near Threatened
+    </label>*@
+@*}*@
 
 
 @foreach (var s in Model)
 {
-    @*<ul><i>@s.ScientificName</i>, classified as @s.Category</ul>*@
-
-    <ul>
-        <i>
-            @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
-            ,
-        </i> classified as @s.Category
-    </ul>
+    <div class="col-12 container">
+        <ul class="list-unstyled row">
+            <li class="list-group-item col-4">
+                @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+            </li>
+        </ul>
+    </div>
 }
 
 

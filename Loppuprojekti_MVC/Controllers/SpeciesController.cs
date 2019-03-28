@@ -51,6 +51,13 @@ namespace Loppuprojekti_MVC.Controllers
             //return View(_as.FirstOrDefault());
         }
 
+        public ActionResult ENSingleSpecies(string searchTerms)
+        {
+            RestUtil ru = new RestUtil();
+            var endangeredSpecies = ru.SingleSpecies(searchTerms).Where(c => c.Category == "EN");
+            return View(endangeredSpecies);
+        }
+
         // GET individual info for individual species, /Species/SingleSpecies
         public ActionResult SingleNarrative(string searchTerms)
         {
@@ -73,7 +80,27 @@ namespace Loppuprojekti_MVC.Controllers
         public ActionResult SCategory(string searchTerms)
         {
             IndividualSpecies ind = new IndividualSpecies();
-            ViewBag.SC = ind.Category;
+            if (searchTerms == "EX")
+            {
+                ViewBag.ST = "Extinct";
+            }
+            else if (searchTerms == "EW")
+            {
+                ViewBag.ST = "Extinct in the wild";
+            }
+            else if (searchTerms == "CR")
+            {
+                ViewBag.ST = "Critically endangered";
+            }
+            else if (searchTerms == "EN")
+            {
+                ViewBag.ST = "Endangered";
+            }
+            else if (searchTerms == "VU")
+            {
+                ViewBag.ST = "Vulnerable";
+            }
+            //ViewBag.ST = searchTerms;
             var _sc = _rs.SCategory(searchTerms);
             return View(_sc);
         }
