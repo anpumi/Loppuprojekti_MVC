@@ -45,10 +45,7 @@ html {
 
 
 body {
-    /*background-image: url('C:/Users/Annukka/academy/Loppuprojekti/earth.png');*/
-    /*<a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by onlyyouqj - www.freepik.com</a>*/
-    /*background-image: url("https://img.freepik.com/free-vector/bright-background-with-dots_1055-3132.jpg?size=338&ext=jpg");*/
-    /*background-image: url("https://png.pngtree.com/back_origin_pic/04/14/48/7dda5f8e8ac3a7d9922d5354c4446ce0.jpg");*/
+
     background-image: linear-gradient(white, grey);
      /*Margin: bottom by footer height*/ 
     /*background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));*/
