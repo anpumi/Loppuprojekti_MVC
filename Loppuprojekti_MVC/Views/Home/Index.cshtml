@@ -24,12 +24,15 @@
 </div>
 @*TODO: Search with common name*@
 <div>@TempData["Errormessage"]</div>
+
 @using (Html.BeginForm("searchTerms", "Species", "SingleSpecies", FormMethod.Get))
 {
-    <input type="text" name="searchTerms" placeholder="Scientific name" />
+    <input type="text" name="searchTerms" placeholder="Scientific name, eg. Ursus Maritimus" style="width: 300px"/>
 
     <input type="submit" name="Search" value="Search" id="searchTerms" />
 }
+<br>
+
 <div>
     <p>
 

@@ -8,11 +8,13 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
+        <p></p>
+        <p></p>
         <h1 class="display-4">@Html.DisplayFor(model => model.Species.ScientificName)</h1>
         <h2 class="lead">@Html.DisplayFor(model => model.Species.MainCommonName)</h2>
     </div>
 </div>
-
+<a href="javascript:void(0);" onclick="history.go(-1);">Back</a>
 <div>
     @*<h1>@Html.DisplayFor(model => model.Species.ScientificName)</h1>
     <h3>@Html.DisplayFor(model => model.Species.MainCommonName)</h3>*@
