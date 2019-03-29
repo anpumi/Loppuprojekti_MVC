@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Loppuprojekti_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 
 
@@ -16,17 +17,19 @@ namespace Loppuprojekti_MVC.Controllers
     //only search logic, GET logic in Models.RestUtil 
     public class SpeciesController : Controller
     {
+        private IMemoryCache cache;
         private RestUtil _rs = new RestUtil();
         //PartialView
         IndividualSpeciesViewModel vm = new IndividualSpeciesViewModel();
 
         // GET species, /Species
+
         public ActionResult SpeciesIndex(string searchTerms = "a")
         {
             searchTerms = searchTerms.ToLower();
             RestUtil rs = new RestUtil();
-            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).OrderBy(c => c.ScientificName).ToList();
-
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "EN" || c.Category == "EX" || c.Category == "EW"
+            || c.Category == "CR" || c.Category == "VU").OrderBy(c => c.ScientificName).ToList();
             ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
 
             var _species = _rs.Species();
@@ -54,11 +57,59 @@ namespace Loppuprojekti_MVC.Controllers
             //return View(_as.FirstOrDefault());
         }
 
-        public ActionResult ENSingleSpecies(string searchTerms)
+        public ActionResult EXSingleSpecies(string searchTerms = "a")
         {
-            RestUtil ru = new RestUtil();
-            var endangeredSpecies = ru.SingleSpecies(searchTerms).Where(c => c.Category == "EN");
-            return View(endangeredSpecies);
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "EX").OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            return View(sp);
+        }
+
+        public ActionResult EWSingleSpecies(string searchTerms = "a")
+        {
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "EW").OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            return View(sp);
+        }
+
+        public ActionResult CRSingleSpecies(string searchTerms = "a")
+        {
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "CR").OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            return View(sp);
+        }
+
+        public ActionResult ENSingleSpecies(string searchTerms = "a")
+        {
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "EN").OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            return View(sp);
+        }
+
+        public ActionResult VUSingleSpecies(string searchTerms = "a")
+        {
+            searchTerms = searchTerms.ToLower();
+            RestUtil rs = new RestUtil();
+            List<Species> sp = rs.Species().Where(t => t.ScientificName.ToLower().StartsWith(searchTerms)).Where(c => c.Category == "VU").OrderBy(c => c.ScientificName).ToList();
+
+            ViewBag.Letters = string.Join("", rs.Species().OrderBy(t => t.ScientificName).Select(t => t.ScientificName.Substring(0, 1)).Distinct());
+
+            return View(sp);
         }
 
         // GET individual info for individual species, /Species/SingleSpecies

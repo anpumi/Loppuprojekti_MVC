@@ -18,7 +18,7 @@
         <p class="lead"> </p>
         <p class="lead"> </p>
         <h1 class="display-4">All threatened species</h1>
-        <p class="lead">@Html.ActionLink("Extinct", "SCategory", "Species", new { searchTerms = "EX" })  |  @Html.ActionLink("Extinct in the wild", "SCategory", "Species", new { searchTerms = "EW" })  |  @Html.ActionLink("Critically Endangered", "SCategory", "Species", new { searchTerms = "CR" })  |  @Html.ActionLink("Endangered", "SCategory", "Species", new { searchTerms = "EN" })  |  @Html.ActionLink("Vulnerable", "SCategory", "Species", new { searchTerms = "VU" })</p>
+        <p class="lead">@Html.ActionLink("Extinct", "EXSingleSpecies", "Species")  |  @Html.ActionLink("Extinct in the wild", "EWSingleSpecies", "Species")  |  @Html.ActionLink("Critically Endangered", "CRSingleSpecies", "Species")  |  @Html.ActionLink("Endangered", "EnSingleSpecies", "Species")  |  @Html.ActionLink("Vulnerable", "VUSingleSpecies", "Species")</p>
         <p class="lead">
             @if (!string.IsNullOrEmpty(letters))
             {
@@ -29,7 +29,7 @@
                     @: &nbsp;
                 }
             }
-            </p>
+        </p>
     </div>
 </div>
 

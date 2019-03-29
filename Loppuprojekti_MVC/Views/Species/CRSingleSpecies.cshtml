@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Loppuprojekti_MVC.Models.Species>
+
+
+@{
+    ViewData["Title"] = "CRSingleSpecies";
+    string letters = ViewBag.Letters;
+}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <p></p>
+        <p></p>
+        <h1 class="display-4">List of critically endangered species</h1>
+        <p class="lead">
+            A taxon is critically endangered when the best available evidence indicates that it meets any of the criteria A to E for critically endangered, and it is therefore considered to be facing an extremely high risk of extinction in the wild.
+        </p>
+        <p class="lead"><a href="javascript:void(0);" onclick="history.go(-1);">Back</a></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p class="lead">
+            @if (!string.IsNullOrEmpty(letters))
+            {
+                foreach (var c in letters)
+                {
+                    @Html.ActionLink(c.ToString().ToUpper(), "CRSingleSpecies", new { searchTerms = c.ToString() })
+
+                    @: &nbsp;
+                }
+            }
+        </p>
+
+    </div>
+</div>
+
+
+
+@foreach (var s in Model)
+{
+    <ul>
+        @Html.ActionLink(s.ScientificName, "SingleSpecies", "Species", new { searchTerms = s.ScientificName })
+    </ul>
+}
+<br>
+<br>
