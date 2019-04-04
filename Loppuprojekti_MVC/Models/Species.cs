@@ -14,7 +14,7 @@ namespace Loppuprojekti_MVC.Models
     {
         /// <summary>The TaxonId property represents the Id for the Species/Taxon.</summary>
         /// <value>The TaxonId property gets set with the int of the GET call.</value>
-        [JsonProperty("taxon_id")]
+        [JsonProperty("taxonid")] // is the problem here? Should it be taxonid?
         public int Taxonid { get; set; }
         [JsonProperty("kingdom_name")]
         public string KingdomName { get; set; }

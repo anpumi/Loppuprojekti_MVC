@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -18,18 +19,28 @@ namespace Loppuprojekti_MVC.Models
         {
              string json = "";
 
-            using (var client = new HttpClient())
+            using (StreamReader sr = new StreamReader(@"C:\Users\Annukka\academy\Loppuprojekti\allspecies.txt"))
             {
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //TODO:kovakoodattu osoite & token, muuta
-                //TODO:pistä if - jos ei ekassa setissä, niin tokassa, kolmannessa....
-                var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/page/0?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
-                var responseString = response.Content.ReadAsStringAsync().Result;
-                json = responseString;
+                Species sp = new Species();
+                json = sr.ReadToEnd();
+                SpeciesRootObject res;
+                res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
+                return res.Result;
             }
-            SpeciesRootObject res; 
-            res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
-            return res.Result;
+
+            //using (var client = new HttpClient())
+            //{
+            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //    //TODO:kovakoodattu osoite & token, muuta
+            //    //TODO:pistä if - jos ei ekassa setissä, niin tokassa, kolmannessa....
+            //    //var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/page/0?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+            //    var response = client.GetAsync($"http://apiv3.iucnredlist.org/api/v3/species/page/0?token=9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee").Result;
+            //    var responseString = response.Content.ReadAsStringAsync().Result;
+            //    json = responseString;
+            //}
+            //SpeciesRootObject res; 
+            //res = JsonConvert.DeserializeObject<SpeciesRootObject>(json);
+            //return res.Result;
         }
 
         //GET individual info for a species

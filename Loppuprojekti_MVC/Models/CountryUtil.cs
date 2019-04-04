@@ -27,10 +27,10 @@ namespace Loppuprojekti_MVC.Models
                 var responseString = response.Content.ReadAsStringAsync().Result;
                 json = responseString;
                 {
-                CountryListRoot cl;
-                cl = JsonConvert.DeserializeObject<CountryListRoot>(json);
+                    CountryListRoot cl;
+                    cl = JsonConvert.DeserializeObject<CountryListRoot>(json);
 
-                return cl.Countries;
+                    return cl.Countries;
 
                 }
 
@@ -65,14 +65,12 @@ namespace Loppuprojekti_MVC.Models
             {
                 CountryList cl = new CountryList();
                 json = sr.ReadToEnd();
-                    CountriesRoot ct;
-                    ct = JsonConvert.DeserializeObject<CountriesRoot>(json);
-                    return ct.Result;
-                    //return ct.Result;
-
+                CountriesRoot ct;
+                ct = JsonConvert.DeserializeObject<CountriesRoot>(json);
+                return ct.Result;
             }
 
-            
+
         }
     }
 }
